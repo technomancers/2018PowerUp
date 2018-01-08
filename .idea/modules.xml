@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/robot.iml" filepath="$PROJECT_DIR$/.idea/modules/robot.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/robot_main.iml" filepath="$PROJECT_DIR$/.idea/modules/robot_main.iml" group="robot" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/robot_test.iml" filepath="$PROJECT_DIR$/.idea/modules/robot_test.iml" group="robot" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2018PowerUp.iml" filepath="$PROJECT_DIR$/.idea/modules/2018PowerUp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2018PowerUp_main.iml" filepath="$PROJECT_DIR$/.idea/modules/2018PowerUp_main.iml" group="2018PowerUp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2018PowerUp_test.iml" filepath="$PROJECT_DIR$/.idea/modules/2018PowerUp_test.iml" group="2018PowerUp" />
     </modules>
   </component>
 </project>
