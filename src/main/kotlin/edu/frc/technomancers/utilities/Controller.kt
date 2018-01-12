@@ -1,4 +1,4 @@
-package edu.frc.technomancers.robot.Utilities
+package edu.frc.technomancers.robot.utilities
 
 import edu.wpi.first.wpilibj.GenericHID
 import edu.wpi.first.wpilibj.Joystick

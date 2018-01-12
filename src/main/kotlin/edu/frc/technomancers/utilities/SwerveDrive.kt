@@ -1,4 +1,4 @@
-package edu.frc.technomancers.robot.Utilities
+package edu.frc.technomancers.robot.utilities
 
 class SwerveDrive(robotLength : Double, robotWidth : Double){
     private val robotDiagonal = Math.hypot(robotLength, robotWidth)
