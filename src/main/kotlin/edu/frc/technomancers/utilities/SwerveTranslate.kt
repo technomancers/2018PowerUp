@@ -1,6 +1,8 @@
 package edu.frc.technomancers.robot.utilities
 
-class SwerveDrive(robotLength : Double, robotWidth : Double){
+import com.sun.javafx.css.CalculatedValue
+
+class SwerveTranslate(robotLength : Double, robotWidth : Double){
     private val robotDiagonal = Math.hypot(robotLength, robotWidth)
     private val cosine = robotLength / robotDiagonal
     private val sine = robotWidth / robotDiagonal
@@ -13,7 +15,7 @@ class SwerveDrive(robotLength : Double, robotWidth : Double){
     var frontLeftMag = 0.0
     var frontLeftAngle = 0.0
 
-    fun Update(x1 : Double, y1 : Double, x2 : Double) {
+    fun Calculate(x1 : Double, y1 : Double, x2 : Double) {
         val backXVector = x1 - x2 * cosine
         val frontXVector = x1 + x2 * cosine
         val leftYVector = y1 - x2 * sine
