@@ -1,6 +1,8 @@
 package edu.frc.technomancers.robot.utilities
 
-class SwerveDrive(robotLength : Double, robotWidth : Double){
+import com.sun.javafx.css.CalculatedValue
+
+class SwerveTranslate(robotLength : Double, robotWidth : Double){
     private val robotDiagonal = Math.hypot(robotLength, robotWidth)
     private val cosine = robotLength / robotDiagonal
     private val sine = robotWidth / robotDiagonal

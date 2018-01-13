@@ -17,29 +17,29 @@ object RobotMap {
     private val robotWidth = table.getEntry("robotWidth")
     private val robotLength = table.getEntry("robotLength")
 
-    val LFMOTOR_DIRECTIONAL : Number
-    val RFMOTOR_DIRECTIONAL : Number
-    val LBMOTOR_DIRECTIONAL : Number
-    val RBMOTOR_DIRECTIONAL : Number
-    val LFMOTOR_ROTATIONAL : Number
-    val RFMOTOR_ROTATIONAL : Number
-    val LBMOTOR_ROTATIONAL : Number
-    val RBMOTOR_ROTATIONAL : Number
-    val ROBOT_WIDTH: Number
-    val ROBOT_LENGTH: Number
+    val LFMOTOR_DIRECTIONAL : Int
+    val RFMOTOR_DIRECTIONAL : Int
+    val LBMOTOR_DIRECTIONAL : Int
+    val RBMOTOR_DIRECTIONAL : Int
+    val LFMOTOR_ROTATIONAL : Int
+    val RFMOTOR_ROTATIONAL : Int
+    val LBMOTOR_ROTATIONAL : Int
+    val RBMOTOR_ROTATIONAL : Int
+    val ROBOT_WIDTH: Double
+    val ROBOT_LENGTH: Double
 
     init {
         initialize()
-        LFMOTOR_DIRECTIONAL = frontLeftDir.getNumber(0)
-        RFMOTOR_DIRECTIONAL = frontRightDir.getNumber(0)
-        LBMOTOR_DIRECTIONAL = backLeftDir.getNumber(0)
-        RBMOTOR_DIRECTIONAL = backRightDir.getNumber(0)
-        LFMOTOR_ROTATIONAL = frontLeftRot.getNumber(0)
-        RFMOTOR_ROTATIONAL = frontRightRot.getNumber(0)
-        LBMOTOR_ROTATIONAL = backLeftRot.getNumber(0)
-        RBMOTOR_ROTATIONAL = backRightRot.getNumber(0)
-        ROBOT_LENGTH = robotLength.getNumber(0)
-        ROBOT_WIDTH = robotWidth.getNumber(0)
+        LFMOTOR_DIRECTIONAL = frontLeftDir.getNumber(0) as Int
+        RFMOTOR_DIRECTIONAL = frontRightDir.getNumber(0) as Int
+        LBMOTOR_DIRECTIONAL = backLeftDir.getNumber(0) as Int
+        RBMOTOR_DIRECTIONAL = backRightDir.getNumber(0) as Int
+        LFMOTOR_ROTATIONAL = frontLeftRot.getNumber(0) as Int
+        RFMOTOR_ROTATIONAL = frontRightRot.getNumber(0) as Int
+        LBMOTOR_ROTATIONAL = backLeftRot.getNumber(0) as Int
+        RBMOTOR_ROTATIONAL = backRightRot.getNumber(0) as Int
+        ROBOT_LENGTH = robotLength.getNumber(0.0) as Double
+        ROBOT_WIDTH = robotWidth.getNumber(0.0) as Double
     }
 
     private fun initialize()
