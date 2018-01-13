@@ -42,14 +42,14 @@ object RobotMap {
         ROBOT_WIDTH = robotWidth.getNumber(0)
     }
 
-    public fun initialize()
+    private fun initialize()
     {
         if (!frontLeftDir.exists()){
             frontLeftDir.setNumber(0)
             frontLeftDir.setPersistent()
         }
 
-        if(!frontRightDir.exists()){
+        if (!frontRightDir.exists()){
             frontRightDir.setNumber(0)
             frontLeftDir.setPersistent()
         }
@@ -59,7 +59,7 @@ object RobotMap {
             backLeftDir.setPersistent()
         }
 
-        if(!backRightRot.exists()){
+        if (!backRightRot.exists()){
             backRightRot.setNumber(0)
             backRightRot.setPersistent()
         }
@@ -69,7 +69,7 @@ object RobotMap {
             frontLeftRot.setPersistent()
         }
 
-        if(!frontRightRot.exists()){
+        if (!frontRightRot.exists()){
             frontRightRot.setNumber(0)
             frontLeftRot.setPersistent()
         }
@@ -79,17 +79,17 @@ object RobotMap {
             backLeftRot.setPersistent()
         }
 
-        if(!backRightRot.exists()){
+        if (!backRightRot.exists()){
             backRightRot.setNumber(0)
             backRightRot.setPersistent()
         }
 
-        if(!robotLength.exists()){
+        if (!robotLength.exists()){
             robotLength.setNumber(0)
             robotLength.setPersistent()
         }
 
-        if(!robotWidth.exists()){
+        if (!robotWidth.exists()){
             robotWidth.setNumber(0)
             robotWidth.setPersistent()
         }

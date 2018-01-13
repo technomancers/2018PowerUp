@@ -1,9 +1,10 @@
-package edu.frc.technomancers.robot.utilities
+package edu.frc.technomancers.utilities
 
 import edu.wpi.first.wpilibj.GenericHID
 import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj.buttons.JoystickButton
 
+@Suppress("MagicNumber")
 class Controller(port: Int, private val threshold : Double = 0.1){
     private val joystick = Joystick(port);
     val buttonA = JoystickButton(joystick, 1)
