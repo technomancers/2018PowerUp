@@ -38,8 +38,8 @@ object RobotMap {
         RFMOTOR_ROTATIONAL = frontRightRot.getNumber(0) as Int
         LBMOTOR_ROTATIONAL = backLeftRot.getNumber(0) as Int
         RBMOTOR_ROTATIONAL = backRightRot.getNumber(0) as Int
-        ROBOT_LENGTH = robotLength.getNumber(0) as Double
-        ROBOT_WIDTH = robotWidth.getNumber(0) as Double
+        ROBOT_LENGTH = robotLength.getNumber(0.0) as Double
+        ROBOT_WIDTH = robotWidth.getNumber(0.0) as Double
     }
 
     public fun initialize()
