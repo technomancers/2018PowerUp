@@ -1,33 +1,32 @@
 package edu.frc.technomancers.robot
 
 import edu.wpi.first.networktables.NetworkTableInstance
-import javafx.beans.binding.NumberBinding
 
 object RobotMap {
     val ntTable = NetworkTableInstance.getDefault()
     val table = ntTable.getTable("Configuration")
 
     private val frontLeftDir = table.getEntry("frontLeftDir")
-    private val LFMOTOR_DIRECTIONAL : Number
     private val frontRightDir = table.getEntry("frontRightDir")
-    private val RFMOTOR_DIRECTIONAL : Number
     private val backLeftDir = table.getEntry("backLeftDir")
-    private val LBMOTOR_DIRECTIONAL : Number
     private val backRightDir = table.getEntry("backRightDir")
-    private val RBMOTOR_DIRECTIONAL : Number
     private val frontLeftRot = table.getEntry("frontLeftRot")
-    private val LFMOTOR_ROTATIONAL : Number
     private val frontRightRot = table.getEntry("frontRightRot")
-    private val RFMOTOR_ROTATIONAL : Number
     private val backLeftRot = table.getEntry("backLeftRot")
-    private val LBMOTOR_ROTATIONAL : Number
     private val backRightRot = table.getEntry("backRightRot")
-    private val RBMOTOR_ROTATIONAL : Number
     private val robotWidth = table.getEntry("robotWidth")
-    private val ROBOT_WIDTH: Number
     private val robotLength = table.getEntry("robotLength")
-    private val ROBOT_LENGTH: Number
 
+    val LFMOTOR_DIRECTIONAL : Number
+    val RFMOTOR_DIRECTIONAL : Number
+    val LBMOTOR_DIRECTIONAL : Number
+    val RBMOTOR_DIRECTIONAL : Number
+    val LFMOTOR_ROTATIONAL : Number
+    val RFMOTOR_ROTATIONAL : Number
+    val LBMOTOR_ROTATIONAL : Number
+    val RBMOTOR_ROTATIONAL : Number
+    val ROBOT_WIDTH: Number
+    val ROBOT_LENGTH: Number
 
     init {
         initialize()
