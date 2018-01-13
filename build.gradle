@@ -1,23 +1,26 @@
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "1.2.0"
-    id "idea"
-    id "jaci.openrio.gradle.GradleRIO" version "2018.01.06b"
+    id 'org.jetbrains.kotlin.jvm' version '1.2.10'
+    id 'idea'
+    id 'jaci.openrio.gradle.GradleRIO' version '2018.01.11'
 }
 
 group 'Technomancers'
 
 def TEAM = 1758
-def ROBOT_CLASS = "edu.frc.technomancers.robot.Robot"
+def ROBOT_CLASS = 'edu.frc.technomancers.robot.Robot'
+
+import jaci.openrio.gradle.frc.*
+import jaci.openrio.gradle.*
 
 deploy {
     targets {
-        target("roborio", jaci.openrio.gradle.frc.RoboRIO) {
+        target('roborio', RoboRIO) {
             team = TEAM
         }
     }
     artifacts {
-        artifact('frcKotlin', jaci.openrio.gradle.frc.FRCJavaArtifact) {
-            targets << "roborio"
+        artifact('frcKotlin', FRCJavaArtifact) {
+            targets << 'roborio'
             jar = 'jar'
         }
     }
@@ -29,20 +32,21 @@ repositories {
 
 dependencies {
     compile wpilib()
+    compile ctre()
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile "org.jetbrains.kotlin:kotlin-stdlib"
+    compile 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.10'
 }
 
 jar {
     from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-    manifest jaci.openrio.gradle.GradleRIOPlugin.javaManifest(ROBOT_CLASS)
+    manifest GradleRIOPlugin.javaManifest(ROBOT_CLASS)
 }
 
 compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = '1.8'
 }
 compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = '1.8'
 }
 
 task wrapper(type: Wrapper) {
