@@ -13,7 +13,6 @@ class DriveWithJoystick: CommandBase(){
     }
 
     override fun initialize() {
-        isFinished = false
     }
 
     override fun execute() {
@@ -22,7 +21,6 @@ class DriveWithJoystick: CommandBase(){
                 Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_Y),
                 Operator.drivingController.getNormalizedAxis(Controller.Axes.RIGHT_X))
         driveTrain.swerveDrive()
-        isFinished = true
     }
 
     override fun end(){

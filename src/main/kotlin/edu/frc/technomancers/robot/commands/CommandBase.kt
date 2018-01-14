@@ -4,5 +4,7 @@ import edu.frc.technomancers.robot.subsystems.DriveTrain
 import edu.wpi.first.wpilibj.command.Command
 
 abstract class CommandBase : Command() {
-    protected val driveTrain = DriveTrain()
+    companion object {
+        val driveTrain = DriveTrain()
+    }
 }

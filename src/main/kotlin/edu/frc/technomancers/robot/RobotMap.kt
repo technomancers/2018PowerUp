@@ -3,8 +3,8 @@ package edu.frc.technomancers.robot
 import edu.wpi.first.networktables.NetworkTableInstance
 
 object RobotMap {
-    val ntTable = NetworkTableInstance.getDefault()
-    val table = ntTable.getTable("Configuration")
+    private val ntTable = NetworkTableInstance.getDefault()
+    private val table = ntTable.getTable("Configuration")
 
     private val frontLeftDir = table.getEntry("frontLeftDir")
     private val frontRightDir = table.getEntry("frontRightDir")
@@ -38,8 +38,8 @@ object RobotMap {
         RFMOTOR_ROTATIONAL = frontRightRot.getNumber(0) as Int
         LBMOTOR_ROTATIONAL = backLeftRot.getNumber(0) as Int
         RBMOTOR_ROTATIONAL = backRightRot.getNumber(0) as Int
-        ROBOT_LENGTH = robotLength.getNumber(0.0) as Double
-        ROBOT_WIDTH = robotWidth.getNumber(0.0) as Double
+        ROBOT_LENGTH = robotLength.getDouble(0.0)
+        ROBOT_WIDTH = robotWidth.getDouble(0.0)
     }
 
     private fun initialize()
@@ -51,7 +51,7 @@ object RobotMap {
 
         if (!frontRightDir.exists()){
             frontRightDir.setNumber(0)
-            frontLeftDir.setPersistent()
+            frontRightDir.setPersistent()
         }
 
         if (!backLeftDir.exists()){
@@ -71,7 +71,7 @@ object RobotMap {
 
         if (!frontRightRot.exists()){
             frontRightRot.setNumber(0)
-            frontLeftRot.setPersistent()
+            frontRightRot.setPersistent()
         }
 
         if (!backLeftRot.exists()){
@@ -85,12 +85,12 @@ object RobotMap {
         }
 
         if (!robotLength.exists()){
-            robotLength.setNumber(0)
+            robotLength.setDouble(0.0)
             robotLength.setPersistent()
         }
 
         if (!robotWidth.exists()){
-            robotWidth.setNumber(0)
+            robotWidth.setDouble(0.0)
             robotWidth.setPersistent()
         }
 
