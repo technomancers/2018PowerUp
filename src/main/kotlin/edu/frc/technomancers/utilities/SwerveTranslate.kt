@@ -1,6 +1,4 @@
-package edu.frc.technomancers.robot.utilities
-
-import com.sun.javafx.css.CalculatedValue
+package edu.frc.technomancers.utilities
 
 class SwerveTranslate(robotLength : Double, robotWidth : Double){
     private val robotDiagonal = Math.hypot(robotLength, robotWidth)
@@ -30,5 +28,12 @@ class SwerveTranslate(robotLength : Double, robotWidth : Double){
         backLeftAngle = Math.atan2(backXVector, leftYVector) / Math.PI
         frontRightAngle = Math.atan2(frontXVector, rightYVector) / Math.PI
         frontLeftAngle = Math.atan2(frontXVector, leftYVector) / Math.PI
+    }
+
+    fun print() {
+        println("Front Left  :$frontLeftMag:$frontLeftAngle")
+        println("Front Right :$frontRightMag:$frontRightAngle")
+        println("Back Left   :$backLeftMag:$backLeftAngle")
+        println("Back Right  :$backRightMag:$backRightAngle")
     }
 }
