@@ -4,12 +4,12 @@ import edu.frc.technomancers.robot.Operator
 import edu.frc.technomancers.robot.utilities.Controller
 import edu.wpi.first.wpilibj.command.Subsystem
 
-public class DriveWithJoystick: CommandBase(){
+class DriveWithJoystick: CommandBase(){
 
     private var isFinished = false
 
     override fun requires(subsystem: Subsystem?) {
-        super.requires(getDriveTrain())
+        super.requires(driveTrain)
     }
 
     override fun initialize() {
@@ -17,10 +17,10 @@ public class DriveWithJoystick: CommandBase(){
     }
 
     override fun execute() {
-        getDriveTrain().swerveTranslate.Calculate(Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_X),
+        driveTrain.swerveTranslate.Calculate(Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_X),
                 Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_Y),
                 Operator.drivingController.getNormalizedAxis(Controller.Axes.RIGHT_X))
-        getDriveTrain().SwerveDrive()
+        driveTrain.SwerveDrive()
         isFinished = true
     }
 

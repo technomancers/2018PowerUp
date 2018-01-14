@@ -2,6 +2,7 @@ package edu.frc.technomancers.subsystems
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import edu.frc.technomancers.robot.RobotMap
+import edu.frc.technomancers.robot.commands.DriveWithJoystick
 import edu.frc.technomancers.robot.utilities.SwerveTranslate
 import edu.frc.technomancers.utilities.WheelDrive
 import edu.wpi.first.wpilibj.command.Subsystem
@@ -26,7 +27,7 @@ class DriveTrain: Subsystem()
     }
 
     override fun initDefaultCommand() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        defaultCommand = DriveWithJoystick()
     }
 
     public fun configEncoders() {
