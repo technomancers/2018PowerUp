@@ -26,7 +26,7 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
          val current = angleMotor.getSelectedSensorPosition(0)
          val currentDivided = current/1800
          val kInterval = (currentDivided.toInt()) * 1800 - 900
-         val nextKInterval = (currentDivided.toInt()) * 1800 - 900
+         val nextKInterval = (currentDivided.toInt() + 1) * 1800 - 900
          val firstDistance = current - (angle + kInterval)
          val secondDistance = (angle + nextKInterval) - current
          if(firstDistance <= secondDistance){
