@@ -24,15 +24,22 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
          val delta = target - actual
          val next = delta + current*/
          val current = angleMotor.getSelectedSensorPosition(0)
-         val currentDivided = current/1800
-         val kInterval = (currentDivided.toInt()) * 1800 - 900
-         val nextKInterval = (currentDivided.toInt() + 1) * 1800 - 900
-         val firstDistance = current - (angle + kInterval)
-         val secondDistance = (angle + nextKInterval) - current
-         if(firstDistance <= secondDistance){
-             angleMotor.set(ControlMode.Position, angle + kInterval)
+         val target = 900 * angle
+         val lowBound = Math.floor((current-900.0)/1800.0) * 1800 + 900
+         val highBound = lowBound + 1800
+         val lowTarget = lowBound - 1800 + target + 900
+         val mediumTarget = lowBound + target + 900
+         val highTarget = highBound + target + 900
+         val firstDistance = Math.abs(current - lowTarget)
+         val secondDistance = Math.abs(current - mediumTarget)
+         val thirdDistance = Math.abs(current - highTarget)
+         val shortestDistance = Math.min(Math.min(firstDistance, secondDistance), thirdDistance)
+         if(shortestDistance == firstDistance){
+             angleMotor.set(ControlMode.Position, lowTarget)
+         } else if(shortestDistance == secondDistance){
+             angleMotor.set(ControlMode.Position, mediumTarget)
          } else {
-             angleMotor.set(ControlMode.Position, angle + nextKInterval)
+             angleMotor.set(ControlMode.Position, highTarget)
          }
          speedMotor.set(ControlMode.PercentOutput, speed)
 
