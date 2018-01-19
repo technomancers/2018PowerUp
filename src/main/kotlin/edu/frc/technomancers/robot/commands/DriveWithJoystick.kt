@@ -19,7 +19,6 @@ class DriveWithJoystick: CommandBase(){
                 Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_X),
                 Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_Y),
                 Operator.drivingController.getNormalizedAxis(Controller.Axes.RIGHT_X))
-        driveTrain.swerveTranslate.print()
         driveTrain.swerveDrive()
     }
 

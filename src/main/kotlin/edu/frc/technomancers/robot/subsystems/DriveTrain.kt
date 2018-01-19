@@ -14,6 +14,9 @@ class DriveTrain: Subsystem()
     private val backRightWheel = WheelDrive(RobotMap.BACK_RIGHT_MOTOR_DIRECTIONAL,RobotMap.BACK_RIGHT_MOTOR_ROTATIONAL)
     val swerveTranslate = SwerveTranslate(RobotMap.ROBOT_LENGTH, RobotMap.ROBOT_WIDTH)
 
+    init {
+    }
+
     override fun initDefaultCommand() {
         defaultCommand = DriveWithJoystick()
     }

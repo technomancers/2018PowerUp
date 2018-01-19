@@ -13,12 +13,28 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
     private val angleMotor = TalonSRX(angleMotorPort)
 
     init{
-        angleMotor.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, 0)
+        angleMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0)
+        angleMotor.setSelectedSensorPosition(900,0,0)
     }
 
      fun drive(speed: Double, angle: Double) {
-        speedMotor.set(ControlMode.PercentOutput, speed)
-        angleMotor.set(ControlMode.Position, angle)
-    }
+         /*val target = 900 * (angle + 1)
+         val current = angleMotor.getSelectedSensorPosition(0)
+         val actual = current % 1800
+         val delta = target - actual
+         val next = delta + current*/
+         val current = angleMotor.getSelectedSensorPosition(0)
+         val currentDivided = current/1800
+         val kInterval = (currentDivided.toInt()) * 1800 - 900
+         val nextKInterval = (currentDivided.toInt()) * 1800 - 900
+         val firstDistance = current - (angle + kInterval)
+         val secondDistance = (angle + nextKInterval) - current
+         if(firstDistance <= secondDistance){
+             angleMotor.set(ControlMode.Position, angle + kInterval)
+         } else {
+             angleMotor.set(ControlMode.Position, angle + nextKInterval)
+         }
+         speedMotor.set(ControlMode.PercentOutput, speed)
 
+    }
 }

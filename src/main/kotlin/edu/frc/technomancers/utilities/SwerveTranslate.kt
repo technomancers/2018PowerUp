@@ -14,6 +14,8 @@ class SwerveTranslate(robotLength : Double, robotWidth : Double){
     var frontLeftAngle = 0.0
 
     fun calculate(x1 : Double, y1 : Double, x2 : Double) {
+        //val y = -1 * y1
+
         val backXVector = x1 - x2 * cosine
         val frontXVector = x1 + x2 * cosine
         val leftYVector = y1 - x2 * sine
@@ -28,12 +30,5 @@ class SwerveTranslate(robotLength : Double, robotWidth : Double){
         backLeftAngle = Math.atan2(backXVector, leftYVector) / Math.PI
         frontRightAngle = Math.atan2(frontXVector, rightYVector) / Math.PI
         frontLeftAngle = Math.atan2(frontXVector, leftYVector) / Math.PI
-    }
-
-    fun print() {
-        println("Front Left  :$frontLeftMag:$frontLeftAngle")
-        println("Front Right :$frontRightMag:$frontRightAngle")
-        println("Back Left   :$backLeftMag:$backLeftAngle")
-        println("Back Right  :$backRightMag:$backRightAngle")
     }
 }
