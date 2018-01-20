@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Joystick
 import edu.wpi.first.wpilibj.buttons.JoystickButton
 
 @Suppress("MagicNumber")
-class Controller(port: Int, private val threshold : Double = 0.1){
+class Controller(port: Int, private val threshold : Double = 0.2){
     private val joystick = Joystick(port);
     val buttonA = JoystickButton(joystick, 1)
     val buttonB = JoystickButton(joystick, 2)
