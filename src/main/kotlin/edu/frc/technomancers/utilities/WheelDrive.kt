@@ -14,22 +14,31 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
 
     init{2
         angleMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0)
-        angleMotor.setSelectedSensorPosition(RobotMap.ENCODER_TICKS_PER_REVOLUTION/2,0,0)
+        angleMotor.setSelectedSensorPosition(0,0,0)
     }
 
     fun drive(speed: Double, angle: Double) {
         val current = angleMotor.getSelectedSensorPosition(0)
+        var speedOfWheel = speed
         val midRelative = (FastMath.abs(current) % RobotMap.ENCODER_TICKS_PER_REVOLUTION) * current.sign
         val lowRelative = midRelative - RobotMap.ENCODER_TICKS_PER_REVOLUTION
         val highRelative = midRelative + RobotMap.ENCODER_TICKS_PER_REVOLUTION
-        val target = (RobotMap.ENCODER_TICKS_PER_REVOLUTION/2) * angle
+        var target = (RobotMap.ENCODER_TICKS_PER_REVOLUTION/2) * angle
         val lowDelta = target - lowRelative
         val midDelta = target - midRelative
         val highDelta = target - highRelative
-        val delta = displacementMin(doubleArrayOf(lowDelta, midDelta, highDelta))
+        var delta = displacementMin(doubleArrayOf(lowDelta, midDelta, highDelta))
+        if(delta < RobotMap.ENCODER_TICKS_PER_REVOLUTION/-4){
+            delta += RobotMap.ENCODER_TICKS_PER_REVOLUTION/2
+            speedOfWheel *= -1
+        }
+        if(delta > RobotMap.ENCODER_TICKS_PER_REVOLUTION/4){
+            delta -= RobotMap.ENCODER_TICKS_PER_REVOLUTION/2
+            speedOfWheel *= -1
+        }
         val next = delta + current
         angleMotor.set(ControlMode.Position, next)
-        speedMotor.set(ControlMode.PercentOutput, speed)
+        speedMotor.set(ControlMode.PercentOutput, speedOfWheel)
     }
 
     private fun displacementMin(deltas : DoubleArray):Double{

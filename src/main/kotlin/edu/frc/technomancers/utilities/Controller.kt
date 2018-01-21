@@ -28,9 +28,6 @@ class Controller(port: Int, private val threshold : Double = 0.2){
         if (Math.abs(currentPos) < threshold) {
             return 0.0
         }
-        if (axes == Axes.LEFT_Y) {
-            return -1 * currentPos
-        }
         return currentPos
     }
 
