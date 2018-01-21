@@ -17,30 +17,33 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
         angleMotor.setSelectedSensorPosition(0,0,0)
     }
 
-     fun drive(speed: Double, angle: Double) {
-        /* val target = 900 * (angle + 1)
-         val current = angleMotor.getSelectedSensorPosition(0)
-         val actual = current % 1800
-         val delta = target - actual
-         val next = delta + current
-         angleMotor.set(ControlMode.Position, next)*/
-         val halfEncoder = RobotMap.ENCODER_TICKS_PER_REVOLUTION / 2
-         val current = angleMotor.getSelectedSensorPosition(0)
-         val numRot = FastMath.floor(FastMath.abs(current)/halfEncoder.toDouble()).toInt() * current.sign
-         val currentTarget = (halfEncoder * (angle + numRot)).toInt()
-         val lowTarget = currentTarget - RobotMap.ENCODER_TICKS_PER_REVOLUTION
-         val highTarget = currentTarget + RobotMap.ENCODER_TICKS_PER_REVOLUTION
-         val lowDistance = FastMath.abs(current - lowTarget)
-         val currentDistance = FastMath.abs(current - currentTarget)
-         val highDistance = FastMath.abs(current - highTarget)
-         val shortestDistance = FastMath.min(FastMath.min(lowDistance, currentDistance), highDistance)
-         val target = when (shortestDistance) {
-             lowDistance -> lowTarget.toDouble()
-             currentDistance -> currentTarget.toDouble()
-             else -> highTarget.toDouble()
-         }
-         angleMotor.set(ControlMode.Position, target)
-         speedMotor.set(ControlMode.PercentOutput, speed)
+    fun drive(speed: Double, angle: Double) {
+        val current = angleMotor.getSelectedSensorPosition(0)
+        val midRelative = (FastMath.abs(current) % RobotMap.ENCODER_TICKS_PER_REVOLUTION) * current.sign
+        val lowRelative = midRelative - RobotMap.ENCODER_TICKS_PER_REVOLUTION
+        val highRelative = midRelative + RobotMap.ENCODER_TICKS_PER_REVOLUTION
+        val target = (RobotMap.ENCODER_TICKS_PER_REVOLUTION/2) * angle
+        val lowDelta = target - lowRelative
+        val midDelta = target - midRelative
+        val highDelta = target - highRelative
+        val delta = displacementMin(doubleArrayOf(lowDelta, midDelta, highDelta))
+        val next = delta + current
+        angleMotor.set(ControlMode.Position, next)
+        speedMotor.set(ControlMode.PercentOutput, speed)
+    }
 
+    private fun displacementMin(deltas : DoubleArray):Double{
+        var min : Double? = null
+        for (delta in deltas){
+            if (min == null){
+                min = delta
+            }else {
+                if (FastMath.abs(delta) < FastMath.abs(min)){
+                    min = delta
+                }
+            }
+        }
+
+        return if (min == null) 0.0 else min
     }
 }

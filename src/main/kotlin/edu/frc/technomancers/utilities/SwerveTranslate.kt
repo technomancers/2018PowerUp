@@ -26,6 +26,14 @@ class SwerveTranslate(robotLength : Double, robotWidth : Double){
         frontRightMag = FastMath.hypot(frontXVector, rightYVector)
         frontLeftMag = FastMath.hypot(frontXVector, leftYVector)
 
+        if (backRightMag > 1 || backLeftMag > 1 || frontRightMag > 1 || frontLeftMag > 1) {
+            val max = FastMath.max(FastMath.max(FastMath.max(frontRightMag, frontLeftMag), backLeftMag), backRightMag)
+            backRightMag /= max
+            backLeftMag /= max
+            frontRightMag /= max
+            frontLeftMag /= max
+        }
+
         backRightAngle = FastMath.atan2(backXVector, rightYVector) / FastMath.PI
         backLeftAngle = FastMath.atan2(backXVector, leftYVector) / FastMath.PI
         frontRightAngle = FastMath.atan2(frontXVector, rightYVector) / FastMath.PI
