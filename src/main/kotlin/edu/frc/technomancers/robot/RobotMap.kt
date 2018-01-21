@@ -3,43 +3,61 @@ package edu.frc.technomancers.robot
 import edu.wpi.first.networktables.NetworkTableInstance
 
 object RobotMap {
-    val ntTable = NetworkTableInstance.getDefault()
-    val table = ntTable.getTable("Configuration")
+    private val ntTable = NetworkTableInstance.getDefault()
+    private val table = ntTable.getTable("Configuration")
 
     private val frontLeftDir = table.getEntry("frontLeftDir")
-    private val frontRightDir = table.getEntry("frontRightDir")
-    private val backLeftDir = table.getEntry("backLeftDir")
-    private val backRightDir = table.getEntry("backRightDir")
     private val frontLeftRot = table.getEntry("frontLeftRot")
+
+    private val frontRightDir = table.getEntry("frontRightDir")
     private val frontRightRot = table.getEntry("frontRightRot")
+
+    private val backLeftDir = table.getEntry("backLeftDir")
     private val backLeftRot = table.getEntry("backLeftRot")
+
+    private val backRightDir = table.getEntry("backRightDir")
     private val backRightRot = table.getEntry("backRightRot")
+
     private val robotWidth = table.getEntry("robotWidth")
     private val robotLength = table.getEntry("robotLength")
 
-    val LFMOTOR_DIRECTIONAL : Number
-    val RFMOTOR_DIRECTIONAL : Number
-    val LBMOTOR_DIRECTIONAL : Number
-    val RBMOTOR_DIRECTIONAL : Number
-    val LFMOTOR_ROTATIONAL : Number
-    val RFMOTOR_ROTATIONAL : Number
-    val LBMOTOR_ROTATIONAL : Number
-    val RBMOTOR_ROTATIONAL : Number
-    val ROBOT_WIDTH: Number
-    val ROBOT_LENGTH: Number
+    private val encoderTicksPerRevolution = table.getEntry("encoderTicksPerRevolution")
+
+    val FRONT_LEFT_MOTOR_DIRECTIONAL : Int
+    val FRONT_LEFT_MOTOR_ROTATIONAL : Int
+
+    val FRONT_RIGHT_MOTOR_DIRECTIONAL : Int
+    val FRONT_RIGHT_MOTOR_ROTATIONAL : Int
+
+    val BACK_LEFT_MOTOR_DIRECTIONAL : Int
+    val BACK_LEFT_MOTOR_ROTATIONAL : Int
+
+    val BACK_RIGHT_MOTOR_DIRECTIONAL : Int
+    val BACK_RIGHT_MOTOR_ROTATIONAL : Int
+
+    val ROBOT_WIDTH : Double
+    val ROBOT_LENGTH : Double
+
+    val ENCODER_TICKS_PER_REVOLUTION : Int
 
     init {
         initialize()
-        LFMOTOR_DIRECTIONAL = frontLeftDir.getNumber(0)
-        RFMOTOR_DIRECTIONAL = frontRightDir.getNumber(0)
-        LBMOTOR_DIRECTIONAL = backLeftDir.getNumber(0)
-        RBMOTOR_DIRECTIONAL = backRightDir.getNumber(0)
-        LFMOTOR_ROTATIONAL = frontLeftRot.getNumber(0)
-        RFMOTOR_ROTATIONAL = frontRightRot.getNumber(0)
-        LBMOTOR_ROTATIONAL = backLeftRot.getNumber(0)
-        RBMOTOR_ROTATIONAL = backRightRot.getNumber(0)
-        ROBOT_LENGTH = robotLength.getNumber(0)
-        ROBOT_WIDTH = robotWidth.getNumber(0)
+        FRONT_LEFT_MOTOR_DIRECTIONAL = frontLeftDir.getNumber(0).toInt()
+        FRONT_LEFT_MOTOR_ROTATIONAL = frontLeftRot.getNumber(0).toInt()
+
+        FRONT_RIGHT_MOTOR_DIRECTIONAL = frontRightDir.getNumber(0).toInt()
+        FRONT_RIGHT_MOTOR_ROTATIONAL = frontRightRot.getNumber(0).toInt()
+
+        BACK_LEFT_MOTOR_DIRECTIONAL = backLeftDir.getNumber(0).toInt()
+        BACK_LEFT_MOTOR_ROTATIONAL = backLeftRot.getNumber(0).toInt()
+
+        BACK_RIGHT_MOTOR_DIRECTIONAL = backRightDir.getNumber(0).toInt()
+        BACK_RIGHT_MOTOR_ROTATIONAL = backRightRot.getNumber(0).toInt()
+
+        ROBOT_LENGTH = robotLength.getNumber(0.0).toDouble()
+        ROBOT_WIDTH = robotWidth.getNumber(0.0).toDouble()
+
+        ENCODER_TICKS_PER_REVOLUTION = encoderTicksPerRevolution.getNumber(0).toInt()
     }
 
     private fun initialize()
@@ -51,12 +69,17 @@ object RobotMap {
 
         if (!frontRightDir.exists()){
             frontRightDir.setNumber(0)
-            frontLeftDir.setPersistent()
+            frontRightDir.setPersistent()
         }
 
         if (!backLeftDir.exists()){
             backLeftDir.setNumber(0)
             backLeftDir.setPersistent()
+        }
+
+        if(!backRightDir.exists()) {
+            backRightDir.setNumber(0)
+            backRightDir.setPersistent()
         }
 
         if (!backRightRot.exists()){
@@ -71,7 +94,7 @@ object RobotMap {
 
         if (!frontRightRot.exists()){
             frontRightRot.setNumber(0)
-            frontLeftRot.setPersistent()
+            frontRightRot.setPersistent()
         }
 
         if (!backLeftRot.exists()){
@@ -85,14 +108,18 @@ object RobotMap {
         }
 
         if (!robotLength.exists()){
-            robotLength.setNumber(0)
+            robotLength.setNumber(0.0)
             robotLength.setPersistent()
         }
 
         if (!robotWidth.exists()){
-            robotWidth.setNumber(0)
+            robotWidth.setNumber(0.0)
             robotWidth.setPersistent()
         }
 
+        if (!encoderTicksPerRevolution.exists()){
+            encoderTicksPerRevolution.setNumber(0.0)
+            encoderTicksPerRevolution.setPersistent()
+        }
     }
 }
