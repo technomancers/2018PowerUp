@@ -21,6 +21,8 @@ object RobotMap {
     private val robotWidth = table.getEntry("robotWidth")
     private val robotLength = table.getEntry("robotLength")
 
+    private val encoderTicksPerRevolution = table.getEntry("encoderTicksPerRevolution")
+
     val FRONT_LEFT_MOTOR_DIRECTIONAL : Int
     val FRONT_LEFT_MOTOR_ROTATIONAL : Int
 
@@ -33,8 +35,10 @@ object RobotMap {
     val BACK_RIGHT_MOTOR_DIRECTIONAL : Int
     val BACK_RIGHT_MOTOR_ROTATIONAL : Int
 
-    val ROBOT_WIDTH: Double
-    val ROBOT_LENGTH: Double
+    val ROBOT_WIDTH : Double
+    val ROBOT_LENGTH : Double
+
+    val ENCODER_TICKS_PER_REVOLUTION : Int
 
     init {
         initialize()
@@ -52,6 +56,8 @@ object RobotMap {
 
         ROBOT_LENGTH = robotLength.getNumber(0.0).toDouble()
         ROBOT_WIDTH = robotWidth.getNumber(0.0).toDouble()
+
+        ENCODER_TICKS_PER_REVOLUTION = encoderTicksPerRevolution.getNumber(0).toInt()
     }
 
     private fun initialize()
@@ -111,5 +117,9 @@ object RobotMap {
             robotWidth.setPersistent()
         }
 
+        if (!encoderTicksPerRevolution.exists()){
+            encoderTicksPerRevolution.setNumber(0.0)
+            encoderTicksPerRevolution.setPersistent()
+        }
     }
 }
