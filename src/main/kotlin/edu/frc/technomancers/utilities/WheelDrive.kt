@@ -14,7 +14,7 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
 
     init{2
         angleMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0)
-        angleMotor.setSelectedSensorPosition(0,0,0)
+        angleMotor.setSelectedSensorPosition(RobotMap.ENCODER_TICKS_PER_REVOLUTION/2,0,0)
     }
 
     fun drive(speed: Double, angle: Double) {
