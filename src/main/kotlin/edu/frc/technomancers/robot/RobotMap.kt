@@ -1,125 +1,42 @@
 package edu.frc.technomancers.robot
 
-import edu.wpi.first.networktables.NetworkTableInstance
+import edu.wpi.first.wpilibj.Preferences
 
 object RobotMap {
-    private val ntTable = NetworkTableInstance.getDefault()
-    private val table = ntTable.getTable("Configuration")
+    private val pref = Preferences.getInstance()
+    val FRONT_LEFT_MOTOR_DIRECTIONAL: Int
+    val FRONT_LEFT_MOTOR_ROTATIONAL: Int
 
-    private val frontLeftDir = table.getEntry("frontLeftDir")
-    private val frontLeftRot = table.getEntry("frontLeftRot")
+    val FRONT_RIGHT_MOTOR_DIRECTIONAL: Int
+    val FRONT_RIGHT_MOTOR_ROTATIONAL: Int
 
-    private val frontRightDir = table.getEntry("frontRightDir")
-    private val frontRightRot = table.getEntry("frontRightRot")
+    val BACK_LEFT_MOTOR_DIRECTIONAL: Int
+    val BACK_LEFT_MOTOR_ROTATIONAL: Int
 
-    private val backLeftDir = table.getEntry("backLeftDir")
-    private val backLeftRot = table.getEntry("backLeftRot")
+    val BACK_RIGHT_MOTOR_DIRECTIONAL: Int
+    val BACK_RIGHT_MOTOR_ROTATIONAL: Int
 
-    private val backRightDir = table.getEntry("backRightDir")
-    private val backRightRot = table.getEntry("backRightRot")
+    val ROBOT_WIDTH: Double
+    val ROBOT_LENGTH: Double
 
-    private val robotWidth = table.getEntry("robotWidth")
-    private val robotLength = table.getEntry("robotLength")
-
-    private val encoderTicksPerRevolution = table.getEntry("encoderTicksPerRevolution")
-
-    val FRONT_LEFT_MOTOR_DIRECTIONAL : Int
-    val FRONT_LEFT_MOTOR_ROTATIONAL : Int
-
-    val FRONT_RIGHT_MOTOR_DIRECTIONAL : Int
-    val FRONT_RIGHT_MOTOR_ROTATIONAL : Int
-
-    val BACK_LEFT_MOTOR_DIRECTIONAL : Int
-    val BACK_LEFT_MOTOR_ROTATIONAL : Int
-
-    val BACK_RIGHT_MOTOR_DIRECTIONAL : Int
-    val BACK_RIGHT_MOTOR_ROTATIONAL : Int
-
-    val ROBOT_WIDTH : Double
-    val ROBOT_LENGTH : Double
-
-    val ENCODER_TICKS_PER_REVOLUTION : Int
+    val ENCODER_TICKS_PER_REVOLUTION: Int
 
     init {
-        initialize()
-        FRONT_LEFT_MOTOR_DIRECTIONAL = frontLeftDir.getNumber(0).toInt()
-        FRONT_LEFT_MOTOR_ROTATIONAL = frontLeftRot.getNumber(0).toInt()
+        FRONT_LEFT_MOTOR_DIRECTIONAL = pref.getInt("frontLeftDir", 0)
+        FRONT_LEFT_MOTOR_ROTATIONAL = pref.getInt("frontLeftRot", 0)
 
-        FRONT_RIGHT_MOTOR_DIRECTIONAL = frontRightDir.getNumber(0).toInt()
-        FRONT_RIGHT_MOTOR_ROTATIONAL = frontRightRot.getNumber(0).toInt()
+        FRONT_RIGHT_MOTOR_DIRECTIONAL = pref.getInt("frontRightDir", 0)
+        FRONT_RIGHT_MOTOR_ROTATIONAL = pref.getInt("frontRightRot", 0)
 
-        BACK_LEFT_MOTOR_DIRECTIONAL = backLeftDir.getNumber(0).toInt()
-        BACK_LEFT_MOTOR_ROTATIONAL = backLeftRot.getNumber(0).toInt()
+        BACK_LEFT_MOTOR_DIRECTIONAL = pref.getInt("backLeftDir", 0)
+        BACK_LEFT_MOTOR_ROTATIONAL = pref.getInt("backLeftRot", 0)
 
-        BACK_RIGHT_MOTOR_DIRECTIONAL = backRightDir.getNumber(0).toInt()
-        BACK_RIGHT_MOTOR_ROTATIONAL = backRightRot.getNumber(0).toInt()
+        BACK_RIGHT_MOTOR_DIRECTIONAL = pref.getInt("backRightDir", 0)
+        BACK_RIGHT_MOTOR_ROTATIONAL = pref.getInt("backRightRot", 0)
 
-        ROBOT_LENGTH = robotLength.getNumber(0.0).toDouble()
-        ROBOT_WIDTH = robotWidth.getNumber(0.0).toDouble()
+        ROBOT_LENGTH = pref.getDouble("robotLength", 0.0)
+        ROBOT_WIDTH = pref.getDouble("RobotWidth", 0.0)
 
-        ENCODER_TICKS_PER_REVOLUTION = encoderTicksPerRevolution.getNumber(0).toInt()
-    }
-
-    private fun initialize()
-    {
-        if (!frontLeftDir.exists()){
-            frontLeftDir.setNumber(0)
-            frontLeftDir.setPersistent()
-        }
-
-        if (!frontRightDir.exists()){
-            frontRightDir.setNumber(0)
-            frontRightDir.setPersistent()
-        }
-
-        if (!backLeftDir.exists()){
-            backLeftDir.setNumber(0)
-            backLeftDir.setPersistent()
-        }
-
-        if(!backRightDir.exists()) {
-            backRightDir.setNumber(0)
-            backRightDir.setPersistent()
-        }
-
-        if (!backRightRot.exists()){
-            backRightRot.setNumber(0)
-            backRightRot.setPersistent()
-        }
-
-        if (!frontLeftRot.exists()){
-            frontLeftRot.setNumber(0)
-            frontLeftRot.setPersistent()
-        }
-
-        if (!frontRightRot.exists()){
-            frontRightRot.setNumber(0)
-            frontRightRot.setPersistent()
-        }
-
-        if (!backLeftRot.exists()){
-            backLeftRot.setNumber(0)
-            backLeftRot.setPersistent()
-        }
-
-        if (!backRightRot.exists()){
-            backRightRot.setNumber(0)
-            backRightRot.setPersistent()
-        }
-
-        if (!robotLength.exists()){
-            robotLength.setNumber(0.0)
-            robotLength.setPersistent()
-        }
-
-        if (!robotWidth.exists()){
-            robotWidth.setNumber(0.0)
-            robotWidth.setPersistent()
-        }
-
-        if (!encoderTicksPerRevolution.exists()){
-            encoderTicksPerRevolution.setNumber(0.0)
-            encoderTicksPerRevolution.setPersistent()
-        }
+        ENCODER_TICKS_PER_REVOLUTION = pref.getInt("encoderTicksPerRevolution", 0)
     }
 }
