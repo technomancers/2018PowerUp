@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem
 
 
 class Encoders: Subsystem() {
-    
+
     val i = DigitalOutput(0)
     override fun initDefaultCommand(){
     }
