@@ -1,8 +1,9 @@
 package edu.frc.technomancers.robot.commands
 
+import com.sun.xml.internal.bind.v2.util.EditDistance
 import edu.frc.technomancers.robot.Operator
 
-class MoveForward(Distance: Int) : CommandBase(){
+class MoveBackward(Distance: Int) : CommandBase(){
     var finished = true
     val distance = Distance
     init {
@@ -12,7 +13,7 @@ class MoveForward(Distance: Int) : CommandBase(){
 
     override fun execute() {
         if(ultra < distance){
-            driveTrain.swerveTranslate.calculate(0.0,1.0,0.0)
+            driveTrain.swerveTranslate.calculate(0.0,-1.0,0.0)
             driveTrain.swerveDrive()
         } else{
             finished = true
