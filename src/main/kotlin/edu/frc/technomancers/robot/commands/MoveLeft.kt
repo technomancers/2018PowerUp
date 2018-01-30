@@ -10,7 +10,7 @@ class MoveForward(Distance: Int) : CommandBase(){
 
     override fun execute() {
         if(ultra < distance){
-            driveTrain.swerveTranslate.calculate(0.0,1.0,0.0)
+            driveTrain.swerveTranslate.calculate(-1.0,0.0,0.0)
             driveTrain.swerveDrive()
         } else{
             finished = true

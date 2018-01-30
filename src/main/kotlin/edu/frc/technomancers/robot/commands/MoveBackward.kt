@@ -1,8 +1,5 @@
 package edu.frc.technomancers.robot.commands
 
-import com.sun.xml.internal.bind.v2.util.EditDistance
-import edu.frc.technomancers.robot.Operator
-
 class MoveBackward(Distance: Int) : CommandBase(){
     var finished = true
     val distance = Distance
