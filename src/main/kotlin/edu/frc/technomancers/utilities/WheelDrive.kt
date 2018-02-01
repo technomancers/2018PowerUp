@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode
 import com.ctre.phoenix.motorcontrol.FeedbackDevice
 import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import edu.frc.technomancers.robot.RobotMap
+import edu.wpi.first.wpilibj.AnalogInput
 import org.apache.commons.math3.util.FastMath
 import kotlin.math.sign
 
@@ -12,9 +13,10 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
     private val speedMotor = TalonSRX(speedMotorPort)
     private val angleMotor = TalonSRX(angleMotorPort)
 
-    init{2
-        angleMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0)
-        angleMotor.setSelectedSensorPosition(0,0,0)
+    init{
+        val configSelectedFeedbackSensor = angleMotor.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, 0)
+        //Sensor Pos is either this or 0. We previously set it to 0. 
+        angleMotor.setSelectedSensorPosition(RobotMap.ENCODER_TICKS_PER_REVOLUTION/2,0,0)
     }
 
     fun drive(speed: Double, angle: Double) {
