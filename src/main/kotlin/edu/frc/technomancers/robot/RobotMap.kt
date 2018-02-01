@@ -21,6 +21,9 @@ object RobotMap {
 
     val ENCODER_TICKS_PER_REVOLUTION: Int
 
+    val FORWARD_CHANNEL: Int
+    val REVERSE_CHANNEL: Int
+
     init {
         FRONT_LEFT_MOTOR_DIRECTIONAL = pref.getInt("frontLeftDir", 0)
         FRONT_LEFT_MOTOR_ROTATIONAL = pref.getInt("frontLeftRot", 0)
