@@ -12,7 +12,7 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
     private val speedMotor = TalonSRX(speedMotorPort)
     private val angleMotor = TalonSRX(angleMotorPort)
 
-    init{2
+    init{
         angleMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0)
         angleMotor.setSelectedSensorPosition(0,0,0)
     }

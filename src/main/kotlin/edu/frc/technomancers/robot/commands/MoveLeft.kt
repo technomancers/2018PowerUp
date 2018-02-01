@@ -1,6 +1,6 @@
 package edu.frc.technomancers.robot.commands
 
-class MoveLeft(Distance: Int) : CommandBase(){
+class MoveLeft(Distance: Double) : CommandBase(){
     private var finished = true
     private val distance = Distance
     init {

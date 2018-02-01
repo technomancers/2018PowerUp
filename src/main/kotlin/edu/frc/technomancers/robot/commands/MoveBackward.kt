@@ -1,6 +1,6 @@
 package edu.frc.technomancers.robot.commands
 
-class MoveBackward(Distance: Int) : CommandBase(){
+class MoveBackward(Distance: Double) : CommandBase(){
     private var finished = true
     private val distance = Distance
     init {
