@@ -38,5 +38,8 @@ object RobotMap {
         ROBOT_WIDTH = pref.getDouble("RobotWidth", 0.0)
 
         ENCODER_TICKS_PER_REVOLUTION = pref.getInt("encoderTicksPerRevolution", 0)
+
+        FORWARD_CHANNEL = pref.getInt("forwardChannel", 0)
+        REVERSE_CHANNEL = pref.getInt("reverseChannel", 0)
     }
 }
