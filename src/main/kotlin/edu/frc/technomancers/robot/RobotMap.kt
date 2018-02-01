@@ -24,6 +24,13 @@ object RobotMap {
     val FORWARD_CHANNEL: Int
     val REVERSE_CHANNEL: Int
 
+    //Ultrasonics
+    val FRONT_LEFT_SONIC: Int
+    val FRONT_RIGHT_SONIC: Int
+    val RIGHT_SONIC: Int
+    val BACK_SONIC: Int
+    val LEFT_SONIC: Int
+
     init {
         FRONT_LEFT_MOTOR_DIRECTIONAL = pref.getInt("frontLeftDir", 0)
         FRONT_LEFT_MOTOR_ROTATIONAL = pref.getInt("frontLeftRot", 0)
@@ -44,5 +51,11 @@ object RobotMap {
 
         FORWARD_CHANNEL = pref.getInt("forwardChannel", 0)
         REVERSE_CHANNEL = pref.getInt("reverseChannel", 0)
+
+        FRONT_LEFT_SONIC = pref.getInt("frontLeftSonic", 0)
+        FRONT_RIGHT_SONIC = pref.getInt("frontRightSonic", 0)
+        LEFT_SONIC = pref.getInt("leftSonic", 0)
+        RIGHT_SONIC = pref.getInt("rightSonic", 0)
+        BACK_SONIC = pref.getInt("backSonic", 0)
     }
 }

@@ -1,5 +1,6 @@
 package edu.frc.technomancers.robot.subsystems
 
+import edu.frc.technomancers.robot.RobotMap
 import edu.wpi.first.wpilibj.DoubleSolenoid
 import edu.wpi.first.wpilibj.command.Subsystem
 

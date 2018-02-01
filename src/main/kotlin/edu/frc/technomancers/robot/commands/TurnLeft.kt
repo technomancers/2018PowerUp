@@ -1,15 +1,16 @@
 package edu.frc.technomancers.robot.commands
 
-class MoveForward(Distance: Int) : CommandBase(){
+class TurnLeft(Angle: Double) : CommandBase(){
     var finished = true
-    val distance = Distance
+    val angle = Angle
     init {
         finished = false
         requires(driveTrain)
+        driveTrain.resetGyroAngle()
     }
 
     override fun execute() {
-        if(ultra < distance){
+        if(driveTrain.getGyroValue() > angle){
             driveTrain.swerveTranslate.calculate(0.0,0.0,-1.0)
             driveTrain.swerveDrive()
         } else{

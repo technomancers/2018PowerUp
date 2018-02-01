@@ -1,17 +1,17 @@
 package edu.frc.technomancers.robot.commands
 
-class MoveForward(Distance: Int) : CommandBase(){
-    var finished = true
-    val distance = Distance
+class MoveForward(Distance: Double) : CommandBase(){
+    private var finished = true
+    private val distance = Distance
     init {
         finished = false
-        requires(driveTrain)
+        requires(CommandBase.driveTrain)
     }
 
     override fun execute() {
-        if(ultra < distance){
-            driveTrain.swerveTranslate.calculate(0.0,1.0,0.0)
-            driveTrain.swerveDrive()
+        if(CommandBase.driveTrain.getFrontLeftSonic() > distance || CommandBase.driveTrain.getFrontRightSonic() > distance ){
+            CommandBase.driveTrain.swerveTranslate.calculate(0.0,1.0,0.0)
+            CommandBase.driveTrain.swerveDrive()
         } else{
             finished = true
         }
