@@ -36,8 +36,6 @@ object RobotMap {
     val BACK_SONIC: Int
     val LEFT_SONIC: Int
 
-    val COMPRESSOR_NODE_ID:Int
-
     init {
         FRONT_LEFT_MOTOR_DIRECTIONAL = pref.getInt("frontLeftDir", 0)
         FRONT_LEFT_MOTOR_ROTATIONAL = pref.getInt("frontLeftRot", 0)
@@ -64,8 +62,6 @@ object RobotMap {
         LEFT_SONIC = pref.getInt("leftSonic", 0)
         RIGHT_SONIC = pref.getInt("rightSonic", 0)
         BACK_SONIC = pref.getInt("backSonic", 0)
-
-        COMPRESSOR_NODE_ID = pref.getInt("Compressors", 1)
 
         ULTRASONIC_VOLTAGE = pref.getDouble("ultrasonicVoltage", 0.0)
         VOLTS_PER_INCH = ULTRASONIC_VOLTAGE / 512
