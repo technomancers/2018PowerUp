@@ -7,7 +7,7 @@ class ToggleCompressor: CommandBase() {
     private var finished: Boolean = false
 
     fun ToggleCompressor() {
-    requires(Compressors())
+    requires(compressor)
     engaged = false
     }
 
