@@ -15,10 +15,9 @@ class MoveBackward(Distance: Double) : CommandBase(){
         } else {
             finished = true
         }
+    }
 
-        override fun isFinished(): Boolean {
-            return finished
-        }
-
+    override fun isFinished(): Boolean {
+        return finished
     }
 }

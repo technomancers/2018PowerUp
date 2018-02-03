@@ -1,7 +1,6 @@
 package edu.frc.technomancers.robot
 
 import edu.wpi.first.wpilibj.Preferences
-import edu.wpi.first.wpilibj.Ultrasonic
 
 object RobotMap {
     private val pref = Preferences.getInstance()
@@ -27,6 +26,8 @@ object RobotMap {
 
     val ULTRASONIC_VOLTAGE : Double
     val VOLTS_PER_INCH : Double
+
+    val COMPRESSOR_NODE_ID: Int
 
     //Ultrasonics
     val FRONT_LEFT_SONIC: Int
@@ -64,5 +65,7 @@ object RobotMap {
 
         ULTRASONIC_VOLTAGE = pref.getDouble("ultrasonicVoltage", 0.0)
         VOLTS_PER_INCH = ULTRASONIC_VOLTAGE / 512
+
+        COMPRESSOR_NODE_ID = pref.getInt("compressorNodeId", 0)
     }
 }

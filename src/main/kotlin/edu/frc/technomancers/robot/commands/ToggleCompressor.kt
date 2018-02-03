@@ -17,10 +17,10 @@ class ToggleCompressor: CommandBase() {
 
     override fun execute() {
         if (engaged){
-            compressors.turnOffCompressor()
+            compressor.turnOffCompressor()
         }
         else{
-            compressors.turnOnCompressor()
+            compressor.turnOnCompressor()
         }
         finished = true
     }
