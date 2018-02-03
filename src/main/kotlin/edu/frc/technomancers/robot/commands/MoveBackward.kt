@@ -9,16 +9,16 @@ class MoveBackward(Distance: Double) : CommandBase(){
     }
 
     override fun execute() {
-        if(driveTrain.getBackSonic() > distance){
-            driveTrain.swerveTranslate.calculate(0.0,-1.0,0.0)
+        if (driveTrain.getBackSonic() > distance) {
+            driveTrain.swerveTranslate.calculate(0.0, -1.0, 0.0)
             driveTrain.swerveDrive()
-        } else{
+        } else {
             finished = true
         }
-    }
 
+        override fun isFinished(): Boolean {
+            return finished
+        }
 
-    override fun isFinished(): Boolean {
-        return finished
     }
 }

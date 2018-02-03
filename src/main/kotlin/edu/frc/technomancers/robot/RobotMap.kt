@@ -1,6 +1,7 @@
 package edu.frc.technomancers.robot
 
 import edu.wpi.first.wpilibj.Preferences
+import edu.wpi.first.wpilibj.Ultrasonic
 
 object RobotMap {
     private val pref = Preferences.getInstance()
@@ -23,6 +24,9 @@ object RobotMap {
 
     val FORWARD_CHANNEL: Int
     val REVERSE_CHANNEL: Int
+
+    val ULTRASONIC_VOLTAGE : Double
+    val VOLTS_PER_INCH : Double
 
     //Ultrasonics
     val FRONT_LEFT_SONIC: Int
@@ -57,5 +61,8 @@ object RobotMap {
         LEFT_SONIC = pref.getInt("leftSonic", 0)
         RIGHT_SONIC = pref.getInt("rightSonic", 0)
         BACK_SONIC = pref.getInt("backSonic", 0)
+
+        ULTRASONIC_VOLTAGE = pref.getDouble("ultrasonicVoltage", 0.0)
+        VOLTS_PER_INCH = ULTRASONIC_VOLTAGE / 512
     }
 }

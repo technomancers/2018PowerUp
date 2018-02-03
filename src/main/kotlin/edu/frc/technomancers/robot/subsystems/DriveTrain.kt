@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro
 import edu.wpi.first.wpilibj.AnalogInput
 import edu.wpi.first.wpilibj.Ultrasonic
 import edu.wpi.first.wpilibj.command.Subsystem
+import org.apache.commons.math3.util.FastMath
+import kotlin.math.exp
 
 class DriveTrain: Subsystem()
 {
@@ -38,23 +40,23 @@ class DriveTrain: Subsystem()
     }
 
     fun getFrontRightSonic(): Double{
-        return frontRightSonic.voltage
+        return FastMath.pow((RobotMap.VOLTS_PER_INCH) / frontRightSonic.voltage, -1.0)
     }
 
     fun getFrontLeftSonic(): Double{
-        return frontLeftSonic.voltage
+        return FastMath.pow((RobotMap.VOLTS_PER_INCH) / frontLeftSonic.voltage, -1.0)
     }
 
     fun getRightSonic(): Double{
-        return rightSonic.voltage
+        return FastMath.pow((RobotMap.VOLTS_PER_INCH) / rightSonic.voltage, -1.0)
     }
 
     fun getLeftSonic(): Double{
-        return leftSonic.voltage
+        return FastMath.pow((RobotMap.VOLTS_PER_INCH) / leftSonic.voltage, -1.0)
     }
 
     fun getBackSonic(): Double{
-        return backSonic.voltage
+        return FastMath.pow((RobotMap.VOLTS_PER_INCH) / backSonic.voltage, -1.0)
     }
 
     fun resetGyroAngle(){
@@ -64,4 +66,5 @@ class DriveTrain: Subsystem()
     fun getGyroValue(): Double{
         return gyro.angle
     }
+
 }
