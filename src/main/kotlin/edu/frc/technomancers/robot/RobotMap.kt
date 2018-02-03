@@ -63,8 +63,6 @@ object RobotMap {
         RIGHT_SONIC = pref.getInt("rightSonic", 0)
         BACK_SONIC = pref.getInt("backSonic", 0)
 
-        COMPRESSOR_NODE_ID = pref.getInt("Compressors", 1)
-
         ULTRASONIC_VOLTAGE = pref.getDouble("ultrasonicVoltage", 0.0)
         VOLTS_PER_INCH = ULTRASONIC_VOLTAGE / 512
     }
