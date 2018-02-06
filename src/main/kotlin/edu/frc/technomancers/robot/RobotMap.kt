@@ -65,5 +65,7 @@ object RobotMap {
 
         ULTRASONIC_VOLTAGE = pref.getDouble("ultrasonicVoltage", 0.0)
         VOLTS_PER_INCH = ULTRASONIC_VOLTAGE / 512
+
+        COMPRESSOR_NODE_ID = pref.getInt("CompressorNodeID", 0)
     }
 }
