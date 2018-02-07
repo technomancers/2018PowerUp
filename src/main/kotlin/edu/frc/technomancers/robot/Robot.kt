@@ -21,10 +21,10 @@ class Robot : IterativeRobot() {
     }
 
     override fun teleopInit() {
+        Operator.drivingController.buttonA.whenPressed(ControlPickup())
     }
 
     override fun teleopPeriodic() {
-        Operator.drivingController.buttonA.whenPressed(ControlPickup())
         Scheduler.getInstance().run()
     }
 }

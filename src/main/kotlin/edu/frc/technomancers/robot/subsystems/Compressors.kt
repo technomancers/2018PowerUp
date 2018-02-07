@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.Subsystem
 import edu.wpi.first.wpilibj.Compressor
 
 import edu.frc.technomancers.robot.RobotMap
+import edu.frc.technomancers.robot.commands.TurnOnCompressor
 
 
 class Compressors: Subsystem() {
@@ -11,7 +12,9 @@ class Compressors: Subsystem() {
     init {
         compressor.closedLoopControl = false
     }
-    override fun initDefaultCommand() {}
+    override fun initDefaultCommand() {
+        defaultCommand = TurnOnCompressor()
+    }
 
     fun turnOnCompressor() {
         compressor.closedLoopControl = true
