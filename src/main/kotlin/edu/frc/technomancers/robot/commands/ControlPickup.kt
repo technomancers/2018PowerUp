@@ -4,11 +4,10 @@ class ControlPickup : CommandBase() {
 
     private var finished = false
 
-    fun ControlPickup() {
-        requires(cubePickup)
-    }
-
     init {
+        fun ControlPickup() {
+            requires(cubePickup)
+        }
         finished = false
     }
 

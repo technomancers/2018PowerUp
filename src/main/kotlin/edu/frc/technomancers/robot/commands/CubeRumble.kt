@@ -2,15 +2,14 @@ package edu.frc.technomancers.robot.commands
 
 import edu.frc.technomancers.robot.Operator
 
-    class GearRumble: CommandBase() {
+    class CubeRumble: CommandBase() {
     private var finished: Boolean = false
 
-
-    fun GearRumble() {
-        requires(cubePickup)
-    }
-
     init {
+        fun CubeRumble() {
+            requires(cubePickup)
+        }
+
         finished = false
     }
 

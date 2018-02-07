@@ -1,8 +1,8 @@
 package edu.frc.technomancers.robot.commands
 
-class TurnLeft(Angle: Double) : CommandBase(){
+class TurnLeft(private val Angle: Double) : CommandBase(){
     var finished = true
-    val angle = Angle
+
     init {
         finished = false
         requires(driveTrain)
@@ -10,7 +10,7 @@ class TurnLeft(Angle: Double) : CommandBase(){
     }
 
     override fun execute() {
-        if(driveTrain.getGyroValue() > angle){
+        if(driveTrain.getGyroValue() > Angle){
             driveTrain.swerveTranslate.calculate(0.0,0.0,-1.0)
             driveTrain.swerveDrive()
         } else{

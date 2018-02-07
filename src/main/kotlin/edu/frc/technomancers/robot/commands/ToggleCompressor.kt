@@ -6,12 +6,11 @@ class ToggleCompressor: CommandBase() {
     private var engaged: Boolean = false
     private var finished: Boolean = false
 
-    fun ToggleCompressor() {
-    requires(compressor)
-    engaged = false
-    }
-
     init {
+        fun ToggleCompressor() {
+            requires(compressor)
+            engaged = false
+        }
         finished = false
     }
 
