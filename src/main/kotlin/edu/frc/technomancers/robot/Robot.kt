@@ -1,5 +1,6 @@
 package edu.frc.technomancers.robot
 
+import edu.frc.technomancers.robot.commands.ControlPickup
 import edu.frc.technomancers.robot.commands.DriveWithJoystick
 import edu.wpi.first.wpilibj.IterativeRobot
 import edu.wpi.first.wpilibj.command.Scheduler
@@ -23,6 +24,7 @@ class Robot : IterativeRobot() {
     }
 
     override fun teleopPeriodic() {
+        Operator.drivingController.buttonA.whenPressed(ControlPickup())
         Scheduler.getInstance().run()
     }
 }
