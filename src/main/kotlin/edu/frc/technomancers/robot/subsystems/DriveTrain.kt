@@ -7,19 +7,19 @@ import edu.frc.technomancers.utilities.WheelDrive
 import edu.wpi.first.wpilibj.ADXRS450_Gyro
 import edu.wpi.first.wpilibj.AnalogInput
 import edu.wpi.first.wpilibj.Ultrasonic
+import edu.wpi.first.wpilibj.command.Command
 import edu.wpi.first.wpilibj.command.Subsystem
 import org.apache.commons.math3.util.FastMath
 import kotlin.math.exp
 
 class DriveTrain: Subsystem()
 {
-    private var frontLeftSonic = AnalogInput(RobotMap.FRONT_LEFT_SONIC)
-    private var frontRightSonic = AnalogInput(RobotMap.FRONT_RIGHT_SONIC)
-    private var leftSonic = AnalogInput(RobotMap.LEFT_SONIC)
-    private var rightSonic = AnalogInput(RobotMap.RIGHT_SONIC)
-    private var backSonic = AnalogInput(RobotMap.BACK_SONIC)
+    private var frontLeftSonic = Ultrasonic(RobotMap.FRONT_LEFT_SONIC_OUTPUT, RobotMap.FRONT_LEFT_SONIC_INPUT)
+    private var frontRightSonic = Ultrasonic(RobotMap.FRONT_RIGHT_SONIC_OUTPUT, RobotMap.FRONT_RIGHT_SONIC_INPUT)
+    private var leftSonic =  Ultrasonic(RobotMap.LEFT_SONIC_OUTPUT, RobotMap.LEFT_SONIC_INPUT)
+    private var rightSonic =  Ultrasonic(RobotMap.RIGHT_SONIC_OUTPUT, RobotMap.RIGHT_SONIC_INPUT)
+    private var backSonic =  Ultrasonic(RobotMap.BACK_SONIC_OUTPUT, RobotMap.BACK_SONIC_INPUT)
     private var gyro = ADXRS450_Gyro()
-
 
     private val frontLeftWheel = WheelDrive(RobotMap.FRONT_LEFT_MOTOR_DIRECTIONAL, RobotMap.FRONT_LEFT_MOTOR_ROTATIONAL)
     private val frontRightWheel = WheelDrive(RobotMap.FRONT_RIGHT_MOTOR_DIRECTIONAL, RobotMap.FRONT_RIGHT_MOTOR_ROTATIONAL)
@@ -31,6 +31,13 @@ class DriveTrain: Subsystem()
         defaultCommand = DriveWithJoystick()
     }
 
+    init {
+        frontLeftSonic.setAutomaticMode(true)
+        frontRightSonic.setAutomaticMode(true)
+        leftSonic.setAutomaticMode(true)
+        rightSonic.setAutomaticMode(true)
+        backSonic.setAutomaticMode(true)
+    }
 
     fun swerveDrive() {
         frontLeftWheel.drive(swerveTranslate.frontLeftMag, swerveTranslate.frontLeftAngle)
@@ -40,23 +47,23 @@ class DriveTrain: Subsystem()
     }
 
     fun getFrontRightSonic(): Double{
-        return FastMath.pow((RobotMap.VOLTS_PER_INCH) / frontRightSonic.voltage, -1.0)
+        return frontRightSonic.rangeInches
     }
 
     fun getFrontLeftSonic(): Double{
-        return FastMath.pow((RobotMap.VOLTS_PER_INCH) / frontLeftSonic.voltage, -1.0)
+        return frontLeftSonic.rangeInches
     }
 
     fun getRightSonic(): Double{
-        return FastMath.pow((RobotMap.VOLTS_PER_INCH) / rightSonic.voltage, -1.0)
+        return rightSonic.rangeInches
     }
 
     fun getLeftSonic(): Double{
-        return FastMath.pow((RobotMap.VOLTS_PER_INCH) / leftSonic.voltage, -1.0)
+        return leftSonic.rangeInches
     }
 
     fun getBackSonic(): Double{
-        return FastMath.pow((RobotMap.VOLTS_PER_INCH) / backSonic.voltage, -1.0)
+        return backSonic.rangeInches
     }
 
     fun resetGyroAngle(){
