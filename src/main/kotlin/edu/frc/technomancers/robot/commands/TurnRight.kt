@@ -11,8 +11,8 @@ class TurnRight(private val Angle: Double) : CommandBase(){
 
     override fun execute() {
         if(driveTrain.getGyroValue() < Angle){
-            driveTrain.swerveTranslate.calculate(0.0,0.0,1.0)
-            driveTrain.swerveDrive()
+            CommandBase.driveTrain.swerveTranslate.calculate(0.0,0.0,1.0)
+            CommandBase.driveTrain.swerveDrive()
         } else{
             finished = true
         }
