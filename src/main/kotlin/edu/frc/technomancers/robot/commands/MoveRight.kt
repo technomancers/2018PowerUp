@@ -8,14 +8,13 @@ class MoveRight(private val Distance: Double) : CommandBase(){
     }
 
     override fun execute() {
-        if(Distance > driveTrain.getRightSonic()){
-            driveTrain.swerveTranslate.calculate(1.0,0.0,0.0)
-            driveTrain.swerveDrive()
+        if(Distance > CommandBase.driveTrain.getRightSonic()){
+            CommandBase.driveTrain.swerveTranslate.calculate(1.0,0.0,0.0)
+            CommandBase.driveTrain.swerveDrive()
         } else{
             finished = true
         }
     }
-
 
     override fun isFinished(): Boolean {
         return finished

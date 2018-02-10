@@ -8,9 +8,9 @@ class MoveBackward(private val Distance: Double) : CommandBase(){
     }
 
     override fun execute() {
-        if (driveTrain.getBackSonic() > Distance) {
-            driveTrain.swerveTranslate.calculate(0.0, -1.0, 0.0)
-            driveTrain.swerveDrive()
+        if (CommandBase.driveTrain.getBackSonic() > Distance) {
+            CommandBase.driveTrain.swerveTranslate.calculate(0.0, -1.0, 0.0)
+            CommandBase.driveTrain.swerveDrive()
         } else {
             finished = true
         }
