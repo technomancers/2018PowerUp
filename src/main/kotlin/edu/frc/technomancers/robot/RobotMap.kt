@@ -21,13 +21,13 @@ object RobotMap {
 
     val ENCODER_TICKS_PER_REVOLUTION: Int
 
-    val FORWARD_CHANNEL: Int
-    val REVERSE_CHANNEL: Int
+    private val FORWARD_CHANNEL: Int
+    private val REVERSE_CHANNEL: Int
 
     private val ULTRASONIC_VOLTAGE : Double
-    val VOLTS_PER_INCH : Double
+    private val VOLTS_PER_INCH : Double
 
-    val COMPRESSOR_NODE_ID: Int
+    private val COMPRESSOR_NODE_ID: Int
 
     //Ultrasonics
     val FRONT_LEFT_SONIC_INPUT: Int
@@ -73,7 +73,7 @@ object RobotMap {
         BACK_SONIC_INPUT = pref.getInt("backSonic", 0)
         BACK_SONIC_OUTPUT = pref.getInt("backSonic", 0)
 
-       COMPRESSOR_NODE_ID = pref.getInt("backSonic", 0)
+        COMPRESSOR_NODE_ID = pref.getInt("backSonic", 0)
 
         ULTRASONIC_VOLTAGE = pref.getDouble("ultrasonicVoltage", 0.0)
         VOLTS_PER_INCH = ULTRASONIC_VOLTAGE / 512
