@@ -1,6 +1,6 @@
 package edu.frc.technomancers.robot.commands
 
-class MoveLeft(private val Distance: Double) : CommandBase(){
+class MoveLeft(private val Distance: Double, private val sensor: Int) : CommandBase(){
     private var finished = true
     init {
         finished = false
@@ -8,11 +8,23 @@ class MoveLeft(private val Distance: Double) : CommandBase(){
     }
 
     override fun execute() {
-        if(Distance > CommandBase.driveTrain.getLeftSonic()){
-            CommandBase.driveTrain.swerveTranslate.calculate(-1.0,0.0,0.0)
-            CommandBase.driveTrain.swerveDrive()
-        } else{
-            finished = true
+        when(sensor) {
+            0-> {
+                if (Distance < driveTrain.getRightSonic()) {
+                    CommandBase.driveTrain.swerveTranslate.calculate(-1.0, 0.0, 0.0)
+                    CommandBase.driveTrain.swerveDrive()
+                } else {
+                    finished = true
+                }
+            }
+            1 -> {
+                if (Math.abs(Distance - driveTrain.getFrontLeftSonic()) < 20 && Math.abs(Distance - driveTrain.getFrontRightSonic()) < 20) {
+                    CommandBase.driveTrain.swerveTranslate.calculate(-1.0, 0.0, 0.0)
+                    CommandBase.driveTrain.swerveDrive()
+                } else {
+                    finished = true
+                }
+            }
         }
     }
 

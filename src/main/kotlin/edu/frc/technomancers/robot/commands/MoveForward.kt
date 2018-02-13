@@ -1,6 +1,6 @@
 package edu.frc.technomancers.robot.commands
 
-class MoveForward(private val Distance: Double) : CommandBase(){
+class MoveForward(private val Distance: Double, private val sensor: Int) : CommandBase(){
     private var finished = true
 
     init {
