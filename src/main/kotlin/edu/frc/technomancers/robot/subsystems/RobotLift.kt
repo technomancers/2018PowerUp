@@ -11,7 +11,7 @@ class RobotLift: Subsystem(){
     private val robotLiftMotor = TalonSRX(RobotMap.ROBOT_LIFT)
 
     init {
-        robotLiftMotor.configSelectedFeedbackSensor(FeedbackDevice.PulseWidthEncodedPosition,1,0)
+        robotLiftMotor.configSelectedFeedbackSensor(FeedbackDevice.PulseWidthEncodedPosition,0,0)
     }
 
     override fun initDefaultCommand() {
