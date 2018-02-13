@@ -20,6 +20,7 @@ class DriveWithJoystick: CommandBase(){
                 Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_Y),
                 Operator.drivingController.getNormalizedAxis(Controller.Axes.RIGHT_X))
         driveTrain.swerveDrive()
+        driveTrain.speak()
     }
 
     override fun end(){
