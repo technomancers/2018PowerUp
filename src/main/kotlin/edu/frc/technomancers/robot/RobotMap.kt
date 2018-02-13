@@ -20,6 +20,10 @@ object RobotMap {
     val ROBOT_LENGTH: Double
 
     val ENCODER_TICKS_PER_REVOLUTION: Int
+
+    val DIST_SWITCH_SIDE_TO_WALL: Double
+    val DIST_SWITCH_FRONT_TO_WALL: Double
+    val DIST_SCALE_TO_ROBOT: Double
     init {
         FRONT_LEFT_MOTOR_DIRECTIONAL = pref.getInt("frontLeftDir", 0)
         FRONT_LEFT_MOTOR_ROTATIONAL = pref.getInt("frontLeftRot", 0)
@@ -37,5 +41,10 @@ object RobotMap {
         ROBOT_WIDTH = pref.getDouble("RobotWidth", 0.0)
 
         ENCODER_TICKS_PER_REVOLUTION = pref.getInt("encoderTicksPerRevolution", 0)
+
+        //Field Dimensions
+        DIST_SWITCH_SIDE_TO_WALL = pref.getDouble("distSwitchSideToWall", 0.0)
+        DIST_SWITCH_FRONT_TO_WALL = pref.getDouble("distSwitchFrontToWall", 0.0)
+        DIST_SCALE_TO_ROBOT = pref.getDouble("distScaleToRobot", 0.0)
     }
 }
