@@ -46,5 +46,6 @@ object RobotMap {
         DIST_SWITCH_SIDE_TO_WALL = pref.getDouble("distSwitchSideToWall", 0.0)
         DIST_SWITCH_FRONT_TO_WALL = pref.getDouble("distSwitchFrontToWall", 0.0)
         DIST_SCALE_TO_ROBOT = pref.getDouble("distScaleToRobot", 0.0)
+
     }
 }
