@@ -57,4 +57,49 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
 
         return if (min == null) 0.0 else min
     }
+
+    fun DeepsAlgorithm(angle: Double, speed: Double){
+        val current = angleMotor.getSelectedSensorPosition(0)
+        var finalTarget = angle
+        var finalSpeed = speed
+        val oppAngle = (angle + 180)%(360)
+        if(current > angle){
+            val distToTargetCCW = FastMath.abs(current - angle)
+            val distToTargetCW = FastMath.abs(360 - distToTargetCCW)
+            val distToOppTarget = FastMath.abs(current - oppAngle)
+            val minDistance = FastMath.min(FastMath.min(distToTargetCCW,distToTargetCW), distToOppTarget)
+            when(minDistance){
+                distToTargetCCW -> {
+                    finalTarget = angle
+                }
+                distToTargetCW -> {
+                    finalTarget = angle + 360
+                }
+                distToOppTarget -> {
+                    finalTarget = oppAngle
+                    finalSpeed *= -1.0
+                }
+            }
+        }
+        if(current < angle){
+            val distToTargetCW = FastMath.abs(angle - current)
+            val distToTargetCCW = 360.0 - distToTargetCW
+            val distToOppTarget = FastMath.abs(current - oppAngle)
+            val minDistance = FastMath.min(FastMath.min(distToTargetCCW,distToTargetCW), distToOppTarget)
+            when(minDistance){
+                distToTargetCW -> {
+                    finalTarget = angle
+                }
+                distToTargetCCW -> {
+                    finalTarget = angle - 360
+                }
+                distToOppTarget -> {
+                    finalTarget = oppAngle
+                    finalSpeed *= -1.0
+                }
+            }
+        }
+        angleMotor.set(ControlMode.Position, finalTarget)
+        speedMotor.set(ControlMode.PercentOutput, finalSpeed)
+    }
 }
