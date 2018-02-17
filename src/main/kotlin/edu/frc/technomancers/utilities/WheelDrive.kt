@@ -60,20 +60,21 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
 
     fun DeepsAlgorithm(angle: Double, speed: Double){
         val current = angleMotor.getSelectedSensorPosition(0)
-        var finalTarget = angle
+        val convAngle = (angle + 1) * 180.0
+        var finalTarget = convAngle
         var finalSpeed = speed
-        val oppAngle = (angle + 180)%(360)
-        if(current > angle){
-            val distToTargetCCW = FastMath.abs(current - angle)
+        val oppAngle = (convAngle + 180)%(360)
+        if(current > convAngle){
+            val distToTargetCCW = FastMath.abs(current - convAngle)
             val distToTargetCW = FastMath.abs(360 - distToTargetCCW)
             val distToOppTarget = FastMath.abs(current - oppAngle)
             val minDistance = FastMath.min(FastMath.min(distToTargetCCW,distToTargetCW), distToOppTarget)
             when(minDistance){
                 distToTargetCCW -> {
-                    finalTarget = angle
+                    finalTarget = convAngle
                 }
                 distToTargetCW -> {
-                    finalTarget = angle + 360
+                    finalTarget = convAngle + 360
                 }
                 distToOppTarget -> {
                     finalTarget = oppAngle
@@ -81,17 +82,17 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
                 }
             }
         }
-        if(current < angle){
-            val distToTargetCW = FastMath.abs(angle - current)
+        if(current < convAngle){
+            val distToTargetCW = FastMath.abs(convAngle - current)
             val distToTargetCCW = 360.0 - distToTargetCW
             val distToOppTarget = FastMath.abs(current - oppAngle)
             val minDistance = FastMath.min(FastMath.min(distToTargetCCW,distToTargetCW), distToOppTarget)
             when(minDistance){
                 distToTargetCW -> {
-                    finalTarget = angle
+                    finalTarget = convAngle
                 }
                 distToTargetCCW -> {
-                    finalTarget = angle - 360
+                    finalTarget = convAngle - 360
                 }
                 distToOppTarget -> {
                     finalTarget = oppAngle
