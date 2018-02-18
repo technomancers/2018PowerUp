@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid
 import edu.wpi.first.wpilibj.command.Subsystem
 
 class CubePickup: Subsystem() {
-    val cubeGripper = DoubleSolenoid(RobotMap.FORWARD_CHANNEL,RobotMap.REVERSE_CHANNEL)
-    val cubeShooter = DoubleSolenoid(RobotMap.FORWARD_CHANNEL,RobotMap.REVERSE_CHANNEL)
+    val cubeGripper = DoubleSolenoid(RobotMap.FORWARD_CHANNEL_GRIPPER,RobotMap.REVERSE_CHANNEL_GRIPPER)
+    val cubeShooter = DoubleSolenoid(RobotMap.FORWARD_CHANNEL_SHOOTER,RobotMap.REVERSE_CHANNEL_SHOOTER)
 
     enum class pneumaticStates{
         PICK_UP_READY, GRIP_CLOSED, BLOCK_SHOT_OUT

@@ -9,6 +9,7 @@ import edu.frc.technomancers.robot.commands.TurnOnCompressor
 
 class Compressors: Subsystem() {
     var compressor = Compressor(RobotMap.COMPRESSOR_NODE_ID)
+    
     init {
         compressor.closedLoopControl = false
     }

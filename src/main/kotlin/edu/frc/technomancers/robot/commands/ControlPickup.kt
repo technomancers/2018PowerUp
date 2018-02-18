@@ -1,6 +1,7 @@
 package edu.frc.technomancers.robot.commands
 
 import edu.frc.technomancers.robot.Operator
+import edu.frc.technomancers.robot.RobotMap
 import edu.frc.technomancers.robot.subsystems.CubePickup
 
 class ControlPickup : CommandBase() {
@@ -19,8 +20,9 @@ class ControlPickup : CommandBase() {
                 Operator.drivingController.setRumble(.5)
             }
             CubePickup.pneumaticStates.GRIP_CLOSED ->{
-                cubePickup.openGripper()
                 cubePickup.shootOut()
+                Thread.sleep((RobotMap.SHOOTING_WAIT_TIME).toLong())
+                cubePickup.openGripper()
                 pneumaticState = CubePickup.pneumaticStates.BLOCK_SHOT_OUT
                 Operator.drivingController.setRumble(1.0)
             }

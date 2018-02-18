@@ -21,8 +21,11 @@ object RobotMap {
 
     val ENCODER_TICKS_PER_REVOLUTION: Int
 
-    val FORWARD_CHANNEL: Int
-    val REVERSE_CHANNEL: Int
+    val FORWARD_CHANNEL_GRIPPER: Int
+    val REVERSE_CHANNEL_GRIPPER: Int
+    val FORWARD_CHANNEL_SHOOTER: Int
+    val REVERSE_CHANNEL_SHOOTER: Int
+
 
     val ULTRASONIC_VOLTAGE : Double
     val VOLTS_PER_INCH : Double
@@ -35,6 +38,8 @@ object RobotMap {
     val RIGHT_SONIC: Int
     val BACK_SONIC: Int
     val LEFT_SONIC: Int
+
+    val SHOOTING_WAIT_TIME: Int
 
     init {
         FRONT_LEFT_MOTOR_DIRECTIONAL = pref.getInt("frontLeftDir", 0)
@@ -54,8 +59,10 @@ object RobotMap {
 
         ENCODER_TICKS_PER_REVOLUTION = pref.getInt("encoderTicksPerRevolution", 0)
 
-        FORWARD_CHANNEL = pref.getInt("forwardChannel", 0)
-        REVERSE_CHANNEL = pref.getInt("reverseChannel", 0)
+        FORWARD_CHANNEL_GRIPPER = pref.getInt("forwardChannelGripper", 0)
+        REVERSE_CHANNEL_GRIPPER = pref.getInt("reverseChannelGripper", 0)
+        FORWARD_CHANNEL_SHOOTER = pref.getInt("forwardChannelShooter", 0)
+        REVERSE_CHANNEL_SHOOTER = pref.getInt("reverseChannelShooter", 0)
 
         FRONT_LEFT_SONIC = pref.getInt("frontLeftSonic", 0)
         FRONT_RIGHT_SONIC = pref.getInt("frontRightSonic", 0)
@@ -67,5 +74,10 @@ object RobotMap {
         VOLTS_PER_INCH = ULTRASONIC_VOLTAGE / 512
 
         COMPRESSOR_NODE_ID = pref.getInt("CompressorNodeID", 0)
+
+        SHOOTING_WAIT_TIME = pref.getInt("shootingWaitTime",0)
+
+
+
     }
 }
