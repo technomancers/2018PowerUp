@@ -4,7 +4,12 @@ import edu.frc.technomancers.robot.RobotMap
 import edu.frc.technomancers.robot.commands.DriveWithJoystick
 import edu.frc.technomancers.utilities.SwerveTranslate
 import edu.frc.technomancers.utilities.WheelDrive
+import edu.wpi.first.wpilibj.ADXRS450_Gyro
+import edu.wpi.first.wpilibj.AnalogInput
+import edu.wpi.first.wpilibj.Ultrasonic
 import edu.wpi.first.wpilibj.command.Subsystem
+import org.apache.commons.math3.util.FastMath
+import kotlin.math.exp
 
 class DriveTrain: Subsystem()
 {
@@ -13,9 +18,6 @@ class DriveTrain: Subsystem()
     private val backLeftWheel = WheelDrive(RobotMap.BACK_LEFT_MOTOR_DIRECTIONAL, RobotMap.BACK_LEFT_MOTOR_ROTATIONAL)
     private val backRightWheel = WheelDrive(RobotMap.BACK_RIGHT_MOTOR_DIRECTIONAL,RobotMap.BACK_RIGHT_MOTOR_ROTATIONAL)
     val swerveTranslate = SwerveTranslate(RobotMap.ROBOT_LENGTH, RobotMap.ROBOT_WIDTH)
-
-    init {
-    }
 
     override fun initDefaultCommand() {
         defaultCommand = DriveWithJoystick()
@@ -28,4 +30,5 @@ class DriveTrain: Subsystem()
         backLeftWheel.drive(swerveTranslate.backLeftMag, swerveTranslate.backLeftAngle)
         backRightWheel.drive(swerveTranslate.backRightMag, swerveTranslate.backRightAngle)
     }
+
 }
