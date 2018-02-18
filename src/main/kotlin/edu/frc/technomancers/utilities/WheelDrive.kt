@@ -58,49 +58,45 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
         return if (min == null) 0.0 else min
     }
 
-    fun DeepsAlgorithm(angle: Double, speed: Double){
+    fun deepsAlgorithm(angle: Double, speed: Double){
         val current = angleMotor.getSelectedSensorPosition(0)
-        val convAngle = (angle + 1) * 180.0
-        var finalTarget = convAngle
+        val convertedAngle = (angle + 1) * RobotMap.ENCODER_TICKS_PER_REVOLUTION/2.0
         var finalSpeed = speed
-        val oppAngle = (convAngle + 180)%(360)
-        if(current > convAngle){
-            val distToTargetCCW = FastMath.abs(current - convAngle)
-            val distToTargetCW = FastMath.abs(360 - distToTargetCCW)
-            val distToOppTarget = FastMath.abs(current - oppAngle)
-            val minDistance = FastMath.min(FastMath.min(distToTargetCCW,distToTargetCW), distToOppTarget)
+        var delta = 0.0
+        if(current > convertedAngle){
+            val distToTargetCCW = FastMath.abs(current - convertedAngle)
+            val distToTargetCW = FastMath.abs(RobotMap.ENCODER_TICKS_PER_REVOLUTION - distToTargetCCW)
+            val minDistance = FastMath.min(distToTargetCCW,distToTargetCW)
             when(minDistance){
                 distToTargetCCW -> {
-                    finalTarget = convAngle
+                    delta -= distToTargetCCW
                 }
                 distToTargetCW -> {
-                    finalTarget = convAngle + 360
-                }
-                distToOppTarget -> {
-                    finalTarget = oppAngle
-                    finalSpeed *= -1.0
+                    delta += distToTargetCW
                 }
             }
         }
-        if(current < convAngle){
-            val distToTargetCW = FastMath.abs(convAngle - current)
-            val distToTargetCCW = 360.0 - distToTargetCW
-            val distToOppTarget = FastMath.abs(current - oppAngle)
-            val minDistance = FastMath.min(FastMath.min(distToTargetCCW,distToTargetCW), distToOppTarget)
+        if(current < convertedAngle){
+            val distToTargetCW = FastMath.abs(convertedAngle - current)
+            val distToTargetCCW = RobotMap.ENCODER_TICKS_PER_REVOLUTION - distToTargetCW
+            val minDistance = FastMath.min(distToTargetCCW,distToTargetCW)
             when(minDistance){
                 distToTargetCW -> {
-                    finalTarget = convAngle
+                    delta += distToTargetCW
                 }
                 distToTargetCCW -> {
-                    finalTarget = convAngle - 360
-                }
-                distToOppTarget -> {
-                    finalTarget = oppAngle
-                    finalSpeed *= -1.0
+                    delta -= distToTargetCCW
                 }
             }
         }
-        angleMotor.set(ControlMode.Position, finalTarget)
+        if(delta < -RobotMap.ENCODER_TICKS_PER_REVOLUTION/4.0){
+            delta += RobotMap.ENCODER_TICKS_PER_REVOLUTION/2.0
+            finalSpeed *= -1.0
+        } else if (delta > RobotMap.ENCODER_TICKS_PER_REVOLUTION/4.0){
+            delta -= RobotMap.ENCODER_TICKS_PER_REVOLUTION/2.0
+            finalSpeed *= -1.0
+        }
+        angleMotor.set(ControlMode.Position, current + delta)
         speedMotor.set(ControlMode.PercentOutput, finalSpeed)
     }
 }
