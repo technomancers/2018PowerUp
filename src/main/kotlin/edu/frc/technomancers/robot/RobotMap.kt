@@ -16,6 +16,8 @@ object RobotMap {
     val BACK_RIGHT_MOTOR_DIRECTIONAL: Int
     val BACK_RIGHT_MOTOR_ROTATIONAL: Int
 
+    val ROBOT_LIFT: Int
+
     val ROBOT_WIDTH: Double
     val ROBOT_LENGTH: Double
 
@@ -53,6 +55,8 @@ object RobotMap {
 
         BACK_RIGHT_MOTOR_DIRECTIONAL = pref.getInt("backRightDir", 0)
         BACK_RIGHT_MOTOR_ROTATIONAL = pref.getInt("backRightRot", 0)
+
+        ROBOT_LIFT = pref.getInt("robotLift",0)
 
         ROBOT_LENGTH = pref.getDouble("robotLength", 0.0)
         ROBOT_WIDTH = pref.getDouble("RobotWidth", 0.0)
