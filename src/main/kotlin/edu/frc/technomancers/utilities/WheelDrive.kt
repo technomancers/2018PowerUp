@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import edu.frc.technomancers.robot.RobotMap
 import edu.wpi.first.wpilibj.AnalogInput
 import edu.wpi.first.wpilibj.PIDController
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import org.apache.commons.math3.util.FastMath
 import kotlin.math.sign
 
@@ -19,8 +20,9 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
         angleMotor.setSelectedSensorPosition(RobotMap.ENCODER_TICKS_PER_REVOLUTION/2,0,0)
     }
 
-    fun drive(speed: Double, angle: Double) {
+    fun drive(speed: Double, angle: Double, name: String) {
         val current = angleMotor.getSelectedSensorPosition(0)
+        SmartDashboard.putNumber(name, 1.0 * current)
         var speedOfWheel = speed
         val midRelative = (FastMath.abs(current) % RobotMap.ENCODER_TICKS_PER_REVOLUTION) * current.sign
         val lowRelative = midRelative - RobotMap.ENCODER_TICKS_PER_REVOLUTION

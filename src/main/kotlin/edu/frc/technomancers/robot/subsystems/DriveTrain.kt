@@ -15,7 +15,6 @@ class DriveTrain: Subsystem() {
     private val backLeftWheel = WheelDrive(RobotMap.BACK_LEFT_MOTOR_DIRECTIONAL, RobotMap.BACK_LEFT_MOTOR_ROTATIONAL)
     private val backRightWheel = WheelDrive(RobotMap.BACK_RIGHT_MOTOR_DIRECTIONAL, RobotMap.BACK_RIGHT_MOTOR_ROTATIONAL)
     val swerveTranslate = SwerveTranslate(RobotMap.ROBOT_LENGTH, RobotMap.ROBOT_WIDTH)
-    val test = AnalogInput(0)
     init {
     }
 
@@ -25,13 +24,11 @@ class DriveTrain: Subsystem() {
 
 
     fun swerveDrive() {
-        frontLeftWheel.drive(swerveTranslate.frontLeftMag, swerveTranslate.frontLeftAngle)
-        frontRightWheel.drive(swerveTranslate.frontRightMag, swerveTranslate.frontRightAngle)
-        backLeftWheel.drive(swerveTranslate.backLeftMag, swerveTranslate.backLeftAngle)
-        backRightWheel.drive(swerveTranslate.backRightMag, swerveTranslate.backRightAngle)
+        frontLeftWheel.drive(swerveTranslate.frontLeftMag, swerveTranslate.frontLeftAngle, "Front Left")
+        frontRightWheel.drive(swerveTranslate.frontRightMag, swerveTranslate.frontRightAngle, "Front Right")
+        backLeftWheel.drive(swerveTranslate.backLeftMag, swerveTranslate.backLeftAngle, "Back Left")
+        backRightWheel.drive(swerveTranslate.backRightMag, swerveTranslate.backRightAngle, "Back Right")
     }
 
-    fun speak() {
-        System.out.println(test.voltage / 5.0 * 360.0)
-    }
+
 }
