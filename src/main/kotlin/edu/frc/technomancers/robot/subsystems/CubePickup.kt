@@ -10,7 +10,7 @@ class CubePickup: Subsystem() {
     val cubeShooter = DoubleSolenoid(RobotMap.FORWARD_CHANNEL_SHOOTER,RobotMap.REVERSE_CHANNEL_SHOOTER)
 
     enum class pneumaticStates{
-        PICK_UP_READY, GRIP_CLOSED, BLOCK_SHOT_OUT
+        PICK_UP_READY, BLOCK_SHOT_OUT
     }
     override fun initDefaultCommand() {
     }

@@ -76,8 +76,5 @@ object RobotMap {
         COMPRESSOR_NODE_ID = pref.getInt("CompressorNodeID", 0)
 
         SHOOTING_WAIT_TIME = pref.getInt("shootingWaitTime",0)
-
-
-
     }
 }

@@ -16,20 +16,17 @@ class ControlPickup : CommandBase() {
         when(pneumaticState){
             CubePickup.pneumaticStates.PICK_UP_READY ->{
                 cubePickup.closeGripper()
-                pneumaticState = CubePickup.pneumaticStates.GRIP_CLOSED
+                pneumaticState = CubePickup.pneumaticStates.BLOCK_SHOT_OUT
                 Operator.drivingController.setRumble(.5)
             }
-            CubePickup.pneumaticStates.GRIP_CLOSED ->{
+            CubePickup.pneumaticStates.BLOCK_SHOT_OUT ->{
                 cubePickup.shootOut()
                 Thread.sleep((RobotMap.SHOOTING_WAIT_TIME).toLong())
                 cubePickup.openGripper()
-                pneumaticState = CubePickup.pneumaticStates.BLOCK_SHOT_OUT
-                Operator.drivingController.setRumble(1.0)
-            }
-            CubePickup.pneumaticStates.BLOCK_SHOT_OUT ->{
+                Thread.sleep((RobotMap.SHOOTING_WAIT_TIME).toLong())
                 cubePickup.shootIn()
-                pneumaticState= CubePickup.pneumaticStates.PICK_UP_READY
                 Operator.drivingController.setRumble(0.0)
+                pneumaticState = CubePickup.pneumaticStates.PICK_UP_READY
             }
         }
         finished = true
