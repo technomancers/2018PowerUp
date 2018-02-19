@@ -13,8 +13,8 @@ class CubeLift: CommandBase(){
     override fun execute() {
         var speed = 0.0
         //Multiply by .5 to slow it down
-        speed -= .5 * Operator.drivingController.getNormalizedAxis(Controller.Axes.TRIGGER_LEFT)
-        speed += .5 * Operator.drivingController.getNormalizedAxis(Controller.Axes.TRIGGER_RIGHT)
+        speed -= Operator.drivingController.getNormalizedAxis(Controller.Axes.TRIGGER_LEFT)
+        speed += Operator.drivingController.getNormalizedAxis(Controller.Axes.TRIGGER_RIGHT)
         robotLift.setLiftSpeed(speed)
     }
 
