@@ -10,19 +10,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import org.apache.commons.math3.util.FastMath
 import kotlin.math.sign
 
-class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
+class WheelDrive(speedMotorPort: Int, angleMotorPort: Int, zeroState: Int)
 {
     private val speedMotor = TalonSRX(speedMotorPort)
     private val angleMotor = TalonSRX(angleMotorPort)
+    private val motorZero = zeroState
 
     init{
-        val configSelectedFeedbackSensor = angleMotor.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, 0)
-        angleMotor.setSelectedSensorPosition(RobotMap.ENCODER_TICKS_PER_REVOLUTION/2,0,0)
+        angleMotor.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, 0)
     }
 
     fun drive(speed: Double, angle: Double, name: String) {
         val current = angleMotor.getSelectedSensorPosition(0)
-        SmartDashboard.putNumber(name, 1.0 * current)
+        SmartDashboard.putNumber(name, (((angleMotor.getSelectedSensorPosition(0)).toDouble())))
         var speedOfWheel = speed
         val midRelative = (FastMath.abs(current) % RobotMap.ENCODER_TICKS_PER_REVOLUTION) * current.sign
         val lowRelative = midRelative - RobotMap.ENCODER_TICKS_PER_REVOLUTION

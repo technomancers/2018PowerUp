@@ -25,6 +25,11 @@ object RobotMap {
 
     val ENCODER_TICKS_PER_REVOLUTION: Int
 
+    val FRONT_LEFT_ZERO: Int
+    val FRONT_RIGHT_ZERO: Int
+    val BACK_LEFT_ZERO: Int
+    val BACK_RIGHT_ZERO: Int
+
     init {
         FRONT_LEFT_MOTOR_DIRECTIONAL = pref.getInt("frontLeftDir", 0)
         FRONT_LEFT_MOTOR_ROTATIONAL = pref.getInt("frontLeftRot", 0)
@@ -46,5 +51,10 @@ object RobotMap {
         ROBOT_WIDTH = pref.getDouble("RobotWidth", 0.0)
 
         ENCODER_TICKS_PER_REVOLUTION = pref.getInt("encoderTicksPerRevolution", 0)
+
+        FRONT_LEFT_ZERO = pref.getInt("frontLeftZero", 0)
+        FRONT_RIGHT_ZERO = pref.getInt("frontRightZero", 0)
+        BACK_LEFT_ZERO = pref.getInt("backLeftZero", 0)
+        BACK_RIGHT_ZERO = pref.getInt("backRightZero", 0)
     }
 }
