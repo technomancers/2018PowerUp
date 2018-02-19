@@ -26,18 +26,7 @@ object RobotMap {
     val FORWARD_CHANNEL_SHOOTER: Int
     val REVERSE_CHANNEL_SHOOTER: Int
 
-
-    val ULTRASONIC_VOLTAGE : Double
-    val VOLTS_PER_INCH : Double
-
     val COMPRESSOR_NODE_ID: Int
-
-    //Ultrasonics
-    val FRONT_LEFT_SONIC: Int
-    val FRONT_RIGHT_SONIC: Int
-    val RIGHT_SONIC: Int
-    val BACK_SONIC: Int
-    val LEFT_SONIC: Int
 
     val SHOOTING_WAIT_TIME: Int
 
@@ -63,15 +52,6 @@ object RobotMap {
         REVERSE_CHANNEL_GRIPPER = pref.getInt("reverseChannelGripper", 0)
         FORWARD_CHANNEL_SHOOTER = pref.getInt("forwardChannelShooter", 0)
         REVERSE_CHANNEL_SHOOTER = pref.getInt("reverseChannelShooter", 0)
-
-        FRONT_LEFT_SONIC = pref.getInt("frontLeftSonic", 0)
-        FRONT_RIGHT_SONIC = pref.getInt("frontRightSonic", 0)
-        LEFT_SONIC = pref.getInt("leftSonic", 0)
-        RIGHT_SONIC = pref.getInt("rightSonic", 0)
-        BACK_SONIC = pref.getInt("backSonic", 0)
-
-        ULTRASONIC_VOLTAGE = pref.getDouble("ultrasonicVoltage", 0.0)
-        VOLTS_PER_INCH = ULTRASONIC_VOLTAGE / 512
 
         COMPRESSOR_NODE_ID = pref.getInt("CompressorNodeID", 0)
 
