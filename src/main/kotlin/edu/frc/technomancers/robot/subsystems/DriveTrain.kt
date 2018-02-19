@@ -36,18 +36,18 @@ class DriveTrain: Subsystem()
     }
 
     fun getFrontLeftSonic(): Int{
-        return (ultrasonics.read()[1]).toInt()
+        return (ultrasonics.read()[4]).toInt()
     }
 
     fun getRightSonic(): Int{
-        return (ultrasonics.read()[2]).toInt()
+        return (ultrasonics.read()[1]).toInt()
     }
 
     fun getBackSonic(): Int{
-        return (ultrasonics.read()[3]).toInt()
+        return (ultrasonics.read()[2]).toInt()
     }
 
     fun getLeftSonic(): Int{
-        return (ultrasonics.read()[4]).toInt()
+        return (ultrasonics.read()[3]).toInt()
     }
 }

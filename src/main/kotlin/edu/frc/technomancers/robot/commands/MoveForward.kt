@@ -1,5 +1,7 @@
 package edu.frc.technomancers.robot.commands
 
+import edu.frc.technomancers.robot.RobotMap
+
 class MoveForward(private val Distance: Double) : CommandBase(){
     private var finished = true
 
@@ -10,7 +12,7 @@ class MoveForward(private val Distance: Double) : CommandBase(){
 
     override fun execute() {
         if(driveTrain.getBackSonic() < Distance){
-            CommandBase.driveTrain.swerveTranslate.calculate(0.0,1.0,0.0)
+            CommandBase.driveTrain.swerveTranslate.calculate(0.0, RobotMap.AUTO_SPEED,0.0)
             CommandBase.driveTrain.swerveDrive()
         } else{
             finished = true
