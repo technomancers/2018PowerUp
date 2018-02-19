@@ -18,6 +18,7 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int, zeroState: Int)
 
     init{
         angleMotor.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, 0)
+        angleMotor.setSelectedSensorPosition(0,0,0)
     }
 
     fun drive(speed: Double, angle: Double, name: String) {
@@ -42,7 +43,8 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int, zeroState: Int)
         }
         val next = delta + current
         angleMotor.set(ControlMode.Position, next)
-        speedMotor.set(ControlMode.PercentOutput, speedOfWheel)
+        SmartDashboard.putNumber(name + " next", angle * RobotMap.ENCODER_TICKS_PER_REVOLUTION/2)
+        speedMotor.set(ControlMode.PercentOutput, speed)
     }
 
     private fun displacementMin(deltas : DoubleArray):Double{

@@ -27,13 +27,9 @@ class DriveTrain: Subsystem() {
 
     fun swerveDrive() {
         frontLeftWheel.drive(swerveTranslate.frontLeftMag, swerveTranslate.frontLeftAngle, "Front Left")
-        SmartDashboard.putNumber("FL Target", swerveTranslate.frontLeftAngle * RobotMap.ENCODER_TICKS_PER_REVOLUTION/2)
         frontRightWheel.drive(swerveTranslate.frontRightMag, swerveTranslate.frontRightAngle, "Front Right")
-        SmartDashboard.putNumber("FR Target", swerveTranslate.frontRightAngle * RobotMap.ENCODER_TICKS_PER_REVOLUTION/2)
         backLeftWheel.drive(swerveTranslate.backLeftMag, swerveTranslate.backLeftAngle, "Back Left")
-        SmartDashboard.putNumber("BR Target", swerveTranslate.backRightAngle * RobotMap.ENCODER_TICKS_PER_REVOLUTION/2)
         backRightWheel.drive(swerveTranslate.backRightMag, swerveTranslate.backRightAngle, "Back Right")
-        SmartDashboard.putNumber("BL Target", swerveTranslate.backLeftAngle * RobotMap.ENCODER_TICKS_PER_REVOLUTION/2)
     }
 
 
