@@ -24,9 +24,10 @@ object RobotMap {
     val DIST_SWITCH_SIDE_TO_WALL: Double
     val DIST_SWITCH_FRONT_TO_WALL: Double
     val DIST_SCALE_TO_ROBOT: Double
+    val DIST_ROBOT_TO_SWITCH: Double
 
     val AUTO_SPEED: Double
-
+    val AUTO_TOLERANCE: Double
     init {
         FRONT_LEFT_MOTOR_DIRECTIONAL = pref.getInt("frontLeftDir", 0)
         FRONT_LEFT_MOTOR_ROTATIONAL = pref.getInt("frontLeftRot", 0)
@@ -49,9 +50,10 @@ object RobotMap {
         DIST_SWITCH_SIDE_TO_WALL = pref.getDouble("distSwitchSideToWall", 0.0)
         DIST_SWITCH_FRONT_TO_WALL = pref.getDouble("distSwitchFrontToWall", 0.0)
         DIST_SCALE_TO_ROBOT = pref.getDouble("distScaleToRobot", 0.0)
+        DIST_ROBOT_TO_SWITCH = pref.getDouble("distRobotToSwitch", 0.0)
 
         AUTO_SPEED = pref.getDouble("autoSpeed" , 0.0)
-
+        AUTO_TOLERANCE = pref.getDouble("autoTolerance" , 0.0)
 
     }
 }

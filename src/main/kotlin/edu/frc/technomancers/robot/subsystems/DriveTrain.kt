@@ -66,10 +66,10 @@ class DriveTrain: Subsystem()
         return (ultrasonics.read()[3]).toInt()
     }
 
-    fun tankDrive(){
-        frMotor.set(ControlMode.PercentOutput, Operator.drivingController.getNormalizedAxis(Controller.Axes.RIGHT_Y))
-        flMotor.set(ControlMode.PercentOutput, Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_Y))
-        brMotor.set(ControlMode.PercentOutput, Operator.drivingController.getNormalizedAxis(Controller.Axes.RIGHT_Y))
-        blMotor.set(ControlMode.PercentOutput, Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_Y))
+    fun tankDrive(left: Double, right: Double){
+        frMotor.set(ControlMode.PercentOutput, right)
+        flMotor.set(ControlMode.PercentOutput, left)
+        brMotor.set(ControlMode.PercentOutput, right)
+        blMotor.set(ControlMode.PercentOutput, left)
     }
 }

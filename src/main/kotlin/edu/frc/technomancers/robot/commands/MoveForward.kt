@@ -1,8 +1,9 @@
 package edu.frc.technomancers.robot.commands
 
 import edu.frc.technomancers.robot.RobotMap
+import org.apache.commons.math3.util.FastMath
 
-class MoveForward(private val Distance: Double) : CommandBase(){
+class MoveForward(private val Distance: Double, private val sensor: Int) : CommandBase(){
     private var finished = true
 
     init {
@@ -11,11 +12,36 @@ class MoveForward(private val Distance: Double) : CommandBase(){
     }
 
     override fun execute() {
-        if(driveTrain.getBackSonic() < Distance){
-            CommandBase.driveTrain.swerveTranslate.calculate(0.0, RobotMap.AUTO_SPEED,0.0)
-            CommandBase.driveTrain.swerveDrive()
-        } else{
-            finished = true
+        when(sensor) {
+            0 -> {
+                if(driveTrain.getFrontRightSonic() > Distance || driveTrain.getFrontLeftSonic() > Distance){
+                    driveTrain.tankDrive(RobotMap.AUTO_SPEED, RobotMap.AUTO_SPEED)
+                } else {
+                    finished = true
+                }
+            }
+            1 -> {
+                if(FastMath.abs(driveTrain.getRightSonic() - Distance) < RobotMap.AUTO_TOLERANCE){
+                    driveTrain.tankDrive(RobotMap.AUTO_SPEED, RobotMap.AUTO_SPEED)
+                } else {
+                    finished = true
+                }
+            }
+            2 -> {
+                if (driveTrain.getBackSonic() < Distance) {
+                    driveTrain.tankDrive(RobotMap.AUTO_SPEED, RobotMap.AUTO_SPEED)
+                } else {
+                    finished = true
+                }
+            }
+            3 -> {
+                if(FastMath.abs(driveTrain.getLeftSonic() - Distance) < RobotMap.AUTO_TOLERANCE){
+                    driveTrain.tankDrive(RobotMap.AUTO_SPEED, RobotMap.AUTO_SPEED)
+                } else {
+                    finished = true
+                }
+            }
+
         }
     }
 
