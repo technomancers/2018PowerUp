@@ -1,27 +1,30 @@
 package edu.frc.technomancers.robot.commands
 
 import edu.frc.technomancers.robot.RobotMap
-import org.apache.commons.math3.util.FastMath
+import edu.wpi.first.wpilibj.Timer
 
-class Turn(private val direction: String, private val Distance: Double): CommandBase(){
+class Turn(private val direction: String): CommandBase(){
     private var finished = false
+    val timer = Timer()
 
     override fun execute() {
         when(direction){
             "Left" -> {
-                if(FastMath.abs(Distance - driveTrain.getFrontRightSonic()) > RobotMap.AUTO_TOLERANCE &&
-                        FastMath.abs(Distance - driveTrain.getFrontLeftSonic()) > RobotMap.AUTO_TOLERANCE){
+                timer.start()
+                if(!timer.hasPeriodPassed(RobotMap.TURN_TIME)){
                     driveTrain.tankDrive(-1.0 * RobotMap.AUTO_SPEED, RobotMap.AUTO_SPEED)
                 } else {
                     finished = true
+                    timer.stop()
                 }
             }
             "Right" -> {
-                if(FastMath.abs(Distance - driveTrain.getFrontRightSonic()) > RobotMap.AUTO_TOLERANCE &&
-                        FastMath.abs(Distance - driveTrain.getFrontLeftSonic()) > RobotMap.AUTO_TOLERANCE){
+                timer.start()
+                if(!timer.hasPeriodPassed(RobotMap.TURN_TIME)){
                     driveTrain.tankDrive(RobotMap.AUTO_SPEED, -1.0 * RobotMap.AUTO_SPEED)
                 } else {
                     finished = true
+                    timer.stop()
                 }
             }
         }

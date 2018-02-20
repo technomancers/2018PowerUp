@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup
 class LeftSwitch: CommandGroup(){
     init {
         addSequential(MoveForward(RobotMap.DIST_SWITCH_SIDE_TO_WALL, 2))
-        addSequential(Turn("Right", RobotMap.DIST_ROBOT_TO_SWITCH))
+        addSequential(Turn("Right"))
         addSequential(MoveForward(0.0, 0))
     }
 }

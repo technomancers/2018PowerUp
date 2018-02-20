@@ -9,6 +9,6 @@ class RightScale: CommandGroup(){
     init {
         addSequential(MoveForward(RobotMap.DIST_SWITCH_SIDE_TO_WALL,2))
         addSequential(MoveForward(RobotMap.DIST_SCALE_TO_ROBOT, 3))
-        addSequential(Turn("Left", RobotMap.DIST_SCALE_TO_ROBOT))
+        addSequential(Turn("Left"))
     }
 }

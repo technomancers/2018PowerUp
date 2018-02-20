@@ -2,12 +2,14 @@ package edu.frc.technomancers.robot.commands.Autonomous
 
 import edu.frc.technomancers.robot.RobotMap
 import edu.frc.technomancers.robot.commands.MoveForward
-import edu.frc.technomancers.robot.commands.MoveRight
+import edu.frc.technomancers.robot.commands.Turn
 import edu.wpi.first.wpilibj.command.CommandGroup
 
 class MiddleStartRightMoveOff : CommandGroup(){
     init{
-        addSequential(MoveRight(RobotMap.DIST_SWITCH_FRONT_TO_WALL,1))
-        addSequential(MoveForward(RobotMap.DIST_SWITCH_FRONT_TO_WALL))
+        addSequential(Turn("Right"))
+        addSequential(MoveForward(RobotMap.MIDDLE_MOVEMENT, 0))
+        addSequential(Turn("Left"))
+        addSequential(MoveForward(0.0,0))
     }
 }
