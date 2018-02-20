@@ -1,8 +1,11 @@
 package edu.frc.technomancers.robot
 
 import edu.frc.technomancers.robot.commands.DriveWithJoystick
+import edu.frc.technomancers.robot.commands.TurnWheels
+import edu.frc.technomancers.robot.subsystems.DriveTrain
 import edu.wpi.first.wpilibj.IterativeRobot
 import edu.wpi.first.wpilibj.command.Scheduler
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 
 class Robot : IterativeRobot() {
     override fun robotInit() {
@@ -24,5 +27,6 @@ class Robot : IterativeRobot() {
 
     override fun teleopPeriodic() {
         Scheduler.getInstance().run()
+        Operator.drivingController.buttonB.whenActive(TurnWheels())
     }
 }

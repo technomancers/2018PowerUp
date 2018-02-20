@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import edu.frc.technomancers.robot.RobotMap
 import edu.wpi.first.wpilibj.AnalogInput
 import edu.wpi.first.wpilibj.PIDController
+import edu.wpi.first.wpilibj.PIDSource
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 import org.apache.commons.math3.util.FastMath
 import kotlin.math.sign
@@ -43,8 +44,8 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int, zeroState: Int)
         }
         val next = delta + current
         angleMotor.set(ControlMode.Position, next)
-        SmartDashboard.putNumber(name + " next", angle * RobotMap.ENCODER_TICKS_PER_REVOLUTION/2)
-        speedMotor.set(ControlMode.PercentOutput, speed)
+        SmartDashboard.putNumber(name + " next", next)
+        speedMotor.set(ControlMode.PercentOutput, speedOfWheel)
     }
 
     private fun displacementMin(deltas : DoubleArray):Double{
