@@ -2,19 +2,12 @@ package edu.frc.technomancers.robot.subsystems
 
 import com.ctre.phoenix.motorcontrol.ControlMode
 import com.ctre.phoenix.motorcontrol.can.TalonSRX
-import edu.frc.technomancers.robot.Operator
 import edu.frc.technomancers.robot.RobotMap
 import edu.frc.technomancers.robot.commands.DriveWithJoystick
-import edu.frc.technomancers.utilities.Controller
 import edu.frc.technomancers.utilities.I2C
 import edu.frc.technomancers.utilities.SwerveTranslate
 import edu.frc.technomancers.utilities.WheelDrive
-import edu.wpi.first.wpilibj.RobotDrive
-import edu.wpi.first.wpilibj.SpeedControllerGroup
-import edu.wpi.first.wpilibj.Talon
 import edu.wpi.first.wpilibj.command.Subsystem
-import edu.wpi.first.wpilibj.drive.DifferentialDrive
-import edu.wpi.first.wpilibj.drive.RobotDriveBase
 
 class DriveTrain: Subsystem()
 {
@@ -67,9 +60,14 @@ class DriveTrain: Subsystem()
     }
 
     fun tankDrive(left: Double, right: Double){
-        frMotor.set(ControlMode.PercentOutput, right)
+        frMotor.set(ControlMode.PercentOutput, 1.25 * right)
         flMotor.set(ControlMode.PercentOutput, left)
-        brMotor.set(ControlMode.PercentOutput, right)
+        brMotor.set(ControlMode.PercentOutput, 1.25 * right)
         blMotor.set(ControlMode.PercentOutput, left)
+//        SmartDashboard.putNumber("FR", getFrontRightSonic().toDouble())
+//        SmartDashboard.putNumber("FL", getFrontLeftSonic().toDouble())
+//        SmartDashboard.putNumber("B", getBackSonic().toDouble())
+//        SmartDashboard.putNumber("L", getLeftSonic().toDouble())
+//        SmartDashboard.putNumber("R", getRightSonic().toDouble())
     }
 }

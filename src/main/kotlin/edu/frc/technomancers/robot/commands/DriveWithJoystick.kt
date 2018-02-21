@@ -22,7 +22,7 @@ class DriveWithJoystick: CommandBase(){
 //        driveTrain.swerveDrive()
         driveTrain.tankDrive(
                 Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_Y),
-                Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_Y))
+                Operator.drivingController.getNormalizedAxis(Controller.Axes.RIGHT_Y))
     }
 
     override fun end(){
