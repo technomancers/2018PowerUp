@@ -30,51 +30,6 @@ class Robot : IterativeRobot() {
     }
 
     override fun autonomousInit() {
-        val startPos = autoChooser.selected
-        var autonomousCommand: Command? = null
-        val platePositions = DriverStation.getInstance().gameSpecificMessage.toCharArray()
-        System.out.println(platePositions[0])
-        System.out.println(platePositions[1])
-        System.out.println(platePositions[2])
-        (RightSwitch()).start()
-//        System.out.println(startPos)
-//        when(startPos){
-//            StartingPosition.LEFT -> {
-//                if(platePositions[0] == 'L'){
-//                    autonomousCommand = LeftSwitch()
-//                } else if(platePositions[1] == ('L')){
-//                    autonomousCommand = LeftScale()
-//                } else{
-//                    autonomousCommand = LeftDefensive()
-//                }
-//            }
-//            StartingPosition.MIDDLE_DEFENSIVE -> {
-//                if (platePositions[0] == 'L') {
-//                    autonomousCommand = MiddleStartRightMoveDef()
-//                } else if (platePositions[0] == 'R') {
-//                    autonomousCommand = MiddleStartLeftMoveDef()
-//                }
-//            }
-//            StartingPosition.MIDDLE_OFFENSIVE -> {
-//                if (platePositions[0] == 'L') {
-//                    autonomousCommand = MiddleStartLeftMoveOff()
-//                } else if (platePositions[0] == 'R') {
-//                    autonomousCommand = MiddleStartRightMoveOff()
-//                }
-//            }
-//            StartingPosition.RIGHT -> {
-//                if(platePositions[0] == 'R'){
-//                    autonomousCommand = RightSwitch()
-//                } else if(platePositions[1] == 'R'){
-//                    autonomousCommand = RightScale()
-//                } else{
-//                    autonomousCommand = RightDefensive()
-//                }
-//            }
-//        }
-//        if(autonomousCommand != null){
-//            autonomousCommand.start()
-//        }
     }
 
     override fun autonomousPeriodic() {

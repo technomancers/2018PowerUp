@@ -17,7 +17,8 @@ class ControlPickup : CommandBase() {
             CubePickup.PneumaticStates.PICK_UP_READY ->{
                 cubePickup.closeGripper()
                 pneumaticState = CubePickup.PneumaticStates.BLOCK_SHOT_OUT
-                Operator.drivingController.setRumble(.5)
+                Operator.drivingController.setRumble(.5
+                )
             }
             CubePickup.PneumaticStates.BLOCK_SHOT_OUT ->{
                 cubePickup.shootOut()
