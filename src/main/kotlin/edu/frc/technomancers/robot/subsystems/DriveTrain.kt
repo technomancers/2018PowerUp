@@ -8,6 +8,7 @@ import edu.frc.technomancers.utilities.I2C
 import edu.frc.technomancers.utilities.SwerveTranslate
 import edu.frc.technomancers.utilities.WheelDrive
 import edu.wpi.first.wpilibj.command.Subsystem
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 
 class DriveTrain: Subsystem()
 {
