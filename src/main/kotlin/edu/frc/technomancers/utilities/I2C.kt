@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.I2C
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 
+@Suppress("MagicNumber")
 class I2C{
     val wire = I2C(I2C.Port.kOnboard,0x2A)
 

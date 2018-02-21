@@ -17,6 +17,7 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int)
         angleMotor.setSelectedSensorPosition(0,0,0)
     }
 
+    @Suppress("MagicNumber")
     fun drive(speed: Double, angle: Double) {
         val current = angleMotor.getSelectedSensorPosition(0)
         var speedOfWheel = speed

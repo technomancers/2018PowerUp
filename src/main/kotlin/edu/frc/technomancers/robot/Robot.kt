@@ -1,8 +1,8 @@
 package edu.frc.technomancers.robot
 
-import edu.frc.technomancers.robot.commands.Autonomous.*
+import edu.frc.technomancers.robot.commands.ControlPickup
 import edu.frc.technomancers.robot.commands.DriveWithJoystick
-import edu.frc.technomancers.robot.commands.Turn
+import edu.frc.technomancers.robot.commands.autonomous.RightSwitch
 import edu.wpi.first.wpilibj.DriverStation
 import edu.wpi.first.wpilibj.IterativeRobot
 import edu.wpi.first.wpilibj.command.Command
@@ -82,6 +82,7 @@ class Robot : IterativeRobot() {
     }
 
     override fun teleopInit() {
+        Operator.drivingController.buttonA.whenPressed(ControlPickup())
     }
 
     override fun teleopPeriodic() {
