@@ -26,6 +26,7 @@ class SwerveTranslate(robotLength : Double, robotWidth : Double){
         frontRightMag = FastMath.hypot(frontXVector, rightYVector)
         frontLeftMag = FastMath.hypot(frontXVector, leftYVector)
 
+        @Suppress("ComplexCondition")
         if (backRightMag > 1 || backLeftMag > 1 || frontRightMag > 1 || frontLeftMag > 1) {
             val max = FastMath.max(FastMath.max(FastMath.max(frontRightMag, frontLeftMag), backLeftMag), backRightMag)
             backRightMag /= max

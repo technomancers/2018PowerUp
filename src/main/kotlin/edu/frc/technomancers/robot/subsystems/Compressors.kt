@@ -21,4 +21,3 @@ class Compressors: Subsystem() {
         compressor.closedLoopControl = !compressor.pressureSwitchValue
     }
 }
-
