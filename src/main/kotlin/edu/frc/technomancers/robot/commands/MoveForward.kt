@@ -1,52 +1,25 @@
 package edu.frc.technomancers.robot.commands
 
 import edu.frc.technomancers.robot.RobotMap
+import edu.wpi.first.wpilibj.Timer
 import org.apache.commons.math3.util.FastMath
 
-class MoveForward(private val Distance: Double, private val sensor: Sensor) : CommandBase() {
+class MoveForward() : CommandBase() {
     private var finished = true
-    enum class Sensor {
-        FRONT, RIGHT, BACK, LEFT
-    }
+    private val timer = Timer()
 
     init {
         finished = false
         requires(CommandBase.driveTrain)
+        timer.start()
     }
 
     override fun execute() {
-        when (sensor) {
-            Sensor.FRONT -> {
-                if (driveTrain.getFrontRightSonic() > Distance || driveTrain.getFrontLeftSonic() > Distance) {
-                    driveTrain.tankDrive(RobotMap.AUTO_SPEED, RobotMap.AUTO_SPEED)
-                } else {
-                    finished = true
-                }
-            }
-            Sensor.RIGHT -> {
-                if (FastMath.abs(driveTrain.getRightSonic() - Distance) > RobotMap.AUTO_TOLERANCE) {
-                    driveTrain.tankDrive(RobotMap.AUTO_SPEED, RobotMap.AUTO_SPEED)
-                } else {
-                    finished = true
-                }
-            }
-            Sensor.BACK -> {
-                if (driveTrain.getBackSonic() < Distance) {
-                    driveTrain.tankDrive(RobotMap.AUTO_SPEED, RobotMap.AUTO_SPEED)
-                } else {
-                    finished = true
-                }
-            }
-            Sensor.LEFT -> {
-                var tmp = driveTrain.getLeftSonic()
-                if (FastMath.abs(tmp - Distance) > RobotMap.AUTO_TOLERANCE) {
-                    System.out.println("lEFT: " + tmp)
-                    driveTrain.tankDrive(RobotMap.AUTO_SPEED, RobotMap.AUTO_SPEED)
-                } else {
-                    finished = true
-                }
-            }
-
+        if(!timer.hasPeriodPassed(RobotMap.TIME_TILL_SWITCH)){
+            driveTrain.tankDrive(RobotMap.AUTO_SPEED, RobotMap.AUTO_SPEED)
+        } else {
+            finished = true
+            timer.stop()
         }
     }
 

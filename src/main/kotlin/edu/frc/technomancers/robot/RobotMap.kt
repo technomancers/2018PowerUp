@@ -23,15 +23,9 @@ object RobotMap {
 
     val ENCODER_TICKS_PER_REVOLUTION: Int
 
-    val DIST_SWITCH_SIDE_TO_WALL: Double
-    val DIST_SWITCH_FRONT_TO_WALL: Double
-    val DIST_SCALE_TO_ROBOT: Double
-    val DIST_ROBOT_TO_SWITCH: Double
-    val MIDDLE_MOVEMENT: Double
-
     val AUTO_SPEED: Double
-    val AUTO_TOLERANCE: Double
-    val TURN_TIME: Double
+    val TIME_TILL_SWITCH: Double
+    val TIME_CUBE_TO_TOP: Double
 
     val FORWARD_CHANNEL_GRIPPER: Int
     val REVERSE_CHANNEL_GRIPPER: Int
@@ -62,16 +56,9 @@ object RobotMap {
 
         ENCODER_TICKS_PER_REVOLUTION = pref.getInt("encoderTicksPerRevolution", 0)
 
-        //Field Dimensions
-        DIST_SWITCH_SIDE_TO_WALL = pref.getDouble("distSwitchSideToWall", 0.0)
-        DIST_SWITCH_FRONT_TO_WALL = pref.getDouble("distSwitchFrontToWall", 0.0)
-        DIST_SCALE_TO_ROBOT = pref.getDouble("distScaleToRobot", 0.0)
-        DIST_ROBOT_TO_SWITCH = pref.getDouble("distRobotToSwitch", 0.0)
-        MIDDLE_MOVEMENT = pref.getDouble("middleMovement",0.0)
-
-        TURN_TIME = pref.getDouble("turnTime", 0.0)
         AUTO_SPEED = pref.getDouble("autoSpeed" , 0.0)
-        AUTO_TOLERANCE = pref.getDouble("autoTolerance" , 0.0)
+        TIME_TILL_SWITCH = pref.getDouble("timeTillSwitch", 0.0)
+        TIME_CUBE_TO_TOP = pref.getDouble("timeCubeToTop", 0.0)
 
         FORWARD_CHANNEL_GRIPPER = pref.getInt("forwardChannelGripper", 0)
         REVERSE_CHANNEL_GRIPPER = pref.getInt("reverseChannelGripper", 0)
