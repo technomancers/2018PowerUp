@@ -1,7 +1,6 @@
 package edu.frc.technomancers.utilities
 
 import com.ctre.phoenix.motorcontrol.ControlMode
-import com.ctre.phoenix.motorcontrol.FeedbackDevice
 import com.ctre.phoenix.motorcontrol.can.TalonSRX
 import edu.frc.technomancers.robot.RobotMap
 import edu.wpi.first.wpilibj.AnalogInput
@@ -14,10 +13,8 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int, analogPos: Int)
     private val angleMotor = TalonSRX(angleMotorPort)
     private val encoder = AnalogInput(analogPos)
 
-    init{
-    }
-
     fun drive(speed: Double, angle: Double) {
+        @Suppress("MagicNumber")
         val current = encoder.voltage * RobotMap.ENCODER_TICKS_PER_REVOLUTION / 5.0
         var speedOfWheel = speed
         val midRelative = (FastMath.abs(current) % RobotMap.ENCODER_TICKS_PER_REVOLUTION) * current.sign

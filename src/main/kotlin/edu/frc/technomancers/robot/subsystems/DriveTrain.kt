@@ -8,19 +8,19 @@ import edu.wpi.first.wpilibj.command.Subsystem
 
 class DriveTrain: Subsystem()
 {
-    private val frontLeftWheel = WheelDrive(RobotMap.FRONT_LEFT_MOTOR_DIRECTIONAL, RobotMap.FRONT_LEFT_MOTOR_ROTATIONAL, RobotMap.FRONT_LEFT_ANALOG)
-    private val frontRightWheel = WheelDrive(RobotMap.FRONT_RIGHT_MOTOR_DIRECTIONAL, RobotMap.FRONT_RIGHT_MOTOR_ROTATIONAL, RobotMap.FRONT_RIGHT_ANALOG)
-    private val backLeftWheel = WheelDrive(RobotMap.BACK_LEFT_MOTOR_DIRECTIONAL, RobotMap.BACK_LEFT_MOTOR_ROTATIONAL)
-    private val backRightWheel = WheelDrive(RobotMap.BACK_RIGHT_MOTOR_DIRECTIONAL,RobotMap.BACK_RIGHT_MOTOR_ROTATIONAL)
+    private val frontLeftWheel = WheelDrive(RobotMap.FRONT_LEFT_MOTOR_DIRECTIONAL,
+            RobotMap.FRONT_LEFT_MOTOR_ROTATIONAL, RobotMap.FRONT_LEFT_ANALOG)
+    private val frontRightWheel = WheelDrive(RobotMap.FRONT_RIGHT_MOTOR_DIRECTIONAL,
+            RobotMap.FRONT_RIGHT_MOTOR_ROTATIONAL, RobotMap.FRONT_RIGHT_ANALOG)
+    private val backLeftWheel = WheelDrive(RobotMap.BACK_LEFT_MOTOR_DIRECTIONAL,
+            RobotMap.BACK_LEFT_MOTOR_ROTATIONAL, RobotMap.BACK_LEFT_ANALOG)
+    private val backRightWheel = WheelDrive(RobotMap.BACK_RIGHT_MOTOR_DIRECTIONAL,
+            RobotMap.BACK_RIGHT_MOTOR_ROTATIONAL, RobotMap.BACK_RIGHT_ANALOG)
     val swerveTranslate = SwerveTranslate(RobotMap.ROBOT_LENGTH, RobotMap.ROBOT_WIDTH)
-
-    init {
-    }
 
     override fun initDefaultCommand() {
         defaultCommand = DriveWithJoystick()
     }
-
 
     fun swerveDrive() {
         frontLeftWheel.drive(swerveTranslate.frontLeftMag, swerveTranslate.frontLeftAngle)
