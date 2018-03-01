@@ -66,14 +66,9 @@ class DriveTrain: Subsystem()
     }
 
     fun tankDrive(left: Double, right: Double){
-        frMotor.set(ControlMode.PercentOutput, 1.25 * right)
+        frMotor.set(ControlMode.PercentOutput, right)
         flMotor.set(ControlMode.PercentOutput, left)
-        brMotor.set(ControlMode.PercentOutput, 1.25 * right)
+        brMotor.set(ControlMode.PercentOutput, right)
         blMotor.set(ControlMode.PercentOutput, left)
-        SmartDashboard.putNumber("FR", getFrontRightSonic().toDouble())
-        SmartDashboard.putNumber("FL", getFrontLeftSonic().toDouble())
-        SmartDashboard.putNumber("B", getBackSonic().toDouble())
-        SmartDashboard.putNumber("L", getLeftSonic().toDouble())
-        SmartDashboard.putNumber("R", getRightSonic().toDouble())
     }
 }
