@@ -47,7 +47,6 @@ object RobotMap {
 
         BACK_RIGHT_MOTOR_DIRECTIONAL = pref.getInt("backRightDir", 0)
         BACK_RIGHT_MOTOR_ROTATIONAL = pref.getInt("backRightRot", 0)
-        BACK_RIGHT_ENCODER = pref.getInt("backRightEnc", 0)
 
         ROBOT_LENGTH = pref.getDouble("robotLength", 0.0)
         ROBOT_WIDTH = pref.getDouble("RobotWidth", 0.0)
@@ -55,9 +54,9 @@ object RobotMap {
         SWERVE_TOLERANCE = pref.getDouble("swerveTolerance", 0.0)
 
         ENCODER_TICKS_PER_REVOLUTION = pref.getInt("encoderTicksPerRevolution", 0)
-        FRONT_RIGHT_ANALOG = pref.getInt("frontRightAnalog", 0)
+        FRONT_RIGHT_ANALOG = pref.getInt("frontRightAnalog", 1)
         FRONT_LEFT_ANALOG = pref.getInt("frontLeftAnalog", 0)
-        BACK_RIGHT_ANALOG = pref.getInt("backRightAnalog", 0)
-        BACK_LEFT_ANALOG = pref.getInt("backLeftAnalog", 0)
+        BACK_RIGHT_ANALOG = pref.getInt("backRightAnalog", 3)
+        BACK_LEFT_ANALOG = pref.getInt("backLeftAnalog", 2)
     }
 }
