@@ -18,7 +18,6 @@ object RobotMap {
 
     val BACK_RIGHT_MOTOR_DIRECTIONAL: Int
     val BACK_RIGHT_MOTOR_ROTATIONAL: Int
-    val BACK_RIGHT_ENCODER: Int
 
     val ROBOT_WIDTH: Double
     val ROBOT_LENGTH: Double
