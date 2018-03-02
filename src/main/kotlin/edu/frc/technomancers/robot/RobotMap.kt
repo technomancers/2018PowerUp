@@ -36,6 +36,18 @@ object RobotMap {
 
     val SHOOTING_WAIT_TIME: Int
 
+    val SWERVE_TOLERANCE: Double
+
+    val FRONT_RIGHT_ANALOG: Int
+    val FRONT_LEFT_ANALOG: Int
+    val BACK_RIGHT_ANALOG: Int
+    val BACK_LEFT_ANALOG: Int
+
+    val FRONT_RIGHT_ZERO: Int
+    val FRONT_LEFT_ZERO: Int
+    val BACK_RIGHT_ZERO: Int
+    val BACK_LEFT_ZERO: Int
+
     init {
         FRONT_LEFT_MOTOR_DIRECTIONAL = pref.getInt("frontLeftDir", 0)
         FRONT_LEFT_MOTOR_ROTATIONAL = pref.getInt("frontLeftRot", 0)
@@ -68,5 +80,17 @@ object RobotMap {
         COMPRESSOR_NODE_ID = pref.getInt("CompressorNodeID", 0)
 
         SHOOTING_WAIT_TIME = pref.getInt("shootingWaitTime",0)
+
+        FRONT_RIGHT_ANALOG = pref.getInt("frontRightAnalog", 1)
+        FRONT_LEFT_ANALOG = pref.getInt("frontLeftAnalog", 0)
+        BACK_RIGHT_ANALOG = pref.getInt("backRightAnalog", 3)
+        BACK_LEFT_ANALOG = pref.getInt("backLeftAnalog", 2)
+
+        BACK_LEFT_ZERO = pref.getInt("backLeftZero", 0)
+        BACK_RIGHT_ZERO = pref.getInt("backRightZero", 0)
+        FRONT_LEFT_ZERO = pref.getInt("frontLeftZero", 0)
+        FRONT_RIGHT_ZERO = pref.getInt("frontRightZero", 0)
+
+        SWERVE_TOLERANCE = pref.getDouble("swerveTolerance", 0.0)
     }
 }
