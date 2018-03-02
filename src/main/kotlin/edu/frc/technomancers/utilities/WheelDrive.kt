@@ -9,14 +9,21 @@ import edu.wpi.first.wpilibj.PIDOutput
 import org.apache.commons.math3.util.FastMath
 import kotlin.math.sign
 
-class WheelDrive(speedMotorPort: Int, angleMotorPort: Int, analogPos: Int) {
+class WheelDrive(speedMotorPort: Int, angleMotorPort: Int, analogPos: Int, zeroState: Int, pos: WheelType) {
+
+
     private val speedMotor = TalonSRX(speedMotorPort)
     private val angleMotor = TalonSRX(angleMotorPort)
     private val encoder = AnalogInput(analogPos)
-    val pid = PIDController(1.0, 0.0, 0.0, encoder, PIDOutput{angleMotor})
+    private val wheelZero = zeroState
+    private val position = pos
+    //val pid = PIDController(1.0, 0.0, 0.0, encoder, PIDOutput{angleMotor})
 
+    enum class WheelType{
+        FRONT, BACK
+    }
     init {
-        pid.enable()
+        //pid.enable()
     }
 
     fun drive(speed: Double, angle: Double) {
@@ -61,7 +68,7 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int, analogPos: Int) {
     }
 
     fun deepsAlgorithm(angle: Double, speed: Double){
-        val current = encoder.voltage * RobotMap.ENCODER_TICKS_PER_REVOLUTION / 5.0
+        val current = ((encoder.voltage * RobotMap.ENCODER_TICKS_PER_REVOLUTION / 5.0 - wheelZero)) % RobotMap.ENCODER_TICKS_PER_REVOLUTION
         val convertedAngle = (angle + 1) * RobotMap.ENCODER_TICKS_PER_REVOLUTION/2.0
         var finalSpeed = speed
         var delta = 0.0
@@ -98,7 +105,15 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int, analogPos: Int) {
             delta -= RobotMap.ENCODER_TICKS_PER_REVOLUTION/2.0
             finalSpeed *= -1.0
         }
-        pid.setpoint = delta + current
+        //pid.setpoint = delta + current
+        if(position == WheelType.BACK){
+            angleMotor.set(ControlMode.PercentOutput, (delta * 2 / RobotMap.ENCODER_TICKS_PER_REVOLUTION))
+        } else {
+            angleMotor.set(ControlMode.PercentOutput, delta * 2 / RobotMap.ENCODER_TICKS_PER_REVOLUTION)
+        }
         speedMotor.set(ControlMode.PercentOutput, finalSpeed)
+        System.out.println("ID" + angleMotor.deviceID)
+        System.out.println(current)
+
     }
 }

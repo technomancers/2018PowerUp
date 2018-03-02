@@ -31,7 +31,12 @@ object RobotMap {
     val BACK_RIGHT_ANALOG: Int
     val BACK_LEFT_ANALOG: Int
 
+    val FRONT_RIGHT_ZERO: Int
+    val FRONT_LEFT_ZERO: Int
+    val BACK_RIGHT_ZERO: Int
+    val BACK_LEFT_ZERO: Int
 
+    val BACK_MULTIPLIER: Double
     init {
         FRONT_LEFT_MOTOR_DIRECTIONAL = pref.getInt("frontLeftDir", 0)
         FRONT_LEFT_MOTOR_ROTATIONAL = pref.getInt("frontLeftRot", 0)
@@ -58,5 +63,12 @@ object RobotMap {
         FRONT_LEFT_ANALOG = pref.getInt("frontLeftAnalog", 0)
         BACK_RIGHT_ANALOG = pref.getInt("backRightAnalog", 3)
         BACK_LEFT_ANALOG = pref.getInt("backLeftAnalog", 2)
+
+        BACK_LEFT_ZERO = pref.getInt("backLeftZero", 0)
+        BACK_RIGHT_ZERO = pref.getInt("backRightZero", 0)
+        FRONT_LEFT_ZERO = pref.getInt("frontLeftZero", 0)
+        FRONT_RIGHT_ZERO = pref.getInt("frontRightZero", 0)
+
+        BACK_MULTIPLIER = pref.getDouble("backMultiplier", 1.0)
     }
 }
