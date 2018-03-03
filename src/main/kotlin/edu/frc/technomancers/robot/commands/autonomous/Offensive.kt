@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup
 
 class Offensive: CommandGroup(){
     init {
+        addParallel(CubeLiftToPosition())
         addSequential(MoveForward())
-        addSequential(CubeLiftToPosition())
         addSequential(ControlPickup())
     }
 }
