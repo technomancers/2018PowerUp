@@ -14,7 +14,7 @@ class CubeLiftToPosition(): CommandBase(){
 
     override fun execute() {
         if(!timer.hasPeriodPassed(RobotMap.TIME_CUBE_TO_TOP)){
-            robotLift.setLiftSpeed(1.0)
+            robotLift.setLiftSpeed(-1.0)
         } else {
             finished = true
             timer.stop()
