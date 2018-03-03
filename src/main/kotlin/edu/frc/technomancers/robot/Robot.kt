@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.DriverStation
 import edu.wpi.first.wpilibj.IterativeRobot
 import edu.wpi.first.wpilibj.command.Scheduler
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard
 
 class Robot : IterativeRobot() {
     enum class StartingPosition{
@@ -21,6 +22,7 @@ class Robot : IterativeRobot() {
         autoChooser.addDefault("Default", StartingPosition.DEFAULT)
         autoChooser.addObject("Left", StartingPosition.LEFT)
         autoChooser.addObject("Right", StartingPosition.RIGHT)
+        SmartDashboard.putData("Autonomous", autoChooser)
     }
 
     override fun robotPeriodic() {
