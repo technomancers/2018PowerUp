@@ -3,11 +3,11 @@ package edu.frc.technomancers.robot.commands
 import edu.frc.technomancers.robot.Operator
 import edu.frc.technomancers.utilities.Controller
 
+class RunMotor: CommandBase(){
 
-class CubeLift: CommandBase(){
-    private var isFinished = false
+    var finished = false
     init {
-        requires(robotLift)
+        requires(testmotor)
     }
 
     override fun execute() {
@@ -15,10 +15,10 @@ class CubeLift: CommandBase(){
         //Multiply by .5 to slow it down
         speed -= Operator.drivingController.getNormalizedAxis(Controller.Axes.TRIGGER_LEFT)
         speed += Operator.drivingController.getNormalizedAxis(Controller.Axes.TRIGGER_RIGHT)
-        robotLift.setLiftSpeed(speed)
+        testmotor.setSpeed(speed)
     }
 
     override fun isFinished(): Boolean {
-        return isFinished
+        return finished
     }
 }
