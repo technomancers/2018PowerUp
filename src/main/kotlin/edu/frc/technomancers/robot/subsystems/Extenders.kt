@@ -10,19 +10,11 @@ class Extenders: Subsystem(){
 
     private val extenderMotor = TalonSRX(RobotMap.EXTENDER_MOTOR)
 
-    enum class ExtenderState{
-        UP, DOWN
-    }
-
     override fun initDefaultCommand() {
         defaultCommand = ToggleExtender()
     }
 
     fun setSpeed(speed: Double){
         extenderMotor.set(ControlMode.PercentOutput, speed)
-    }
-
-    fun stopMotor(){
-        extenderMotor.set(ControlMode.PercentOutput, 0.0)
     }
 }

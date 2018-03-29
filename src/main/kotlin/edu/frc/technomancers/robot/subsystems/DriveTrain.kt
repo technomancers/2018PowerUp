@@ -53,26 +53,6 @@ class DriveTrain: Subsystem() {
         backRightWheel.drive(swerveTranslate.backRightMag, swerveTranslate.backRightAngle)
     }
 
-    fun getFrontRightSonic(): Int {
-        return (ultrasonics.read()[0]).toInt()
-    }
-
-    fun getFrontLeftSonic(): Int {
-        return (ultrasonics.read()[4]).toInt()
-    }
-
-    fun getRightSonic(): Int {
-        return (ultrasonics.read()[1]).toInt()
-    }
-
-    fun getBackSonic(): Int {
-        return (ultrasonics.read()[2]).toInt()
-    }
-
-    fun getLeftSonic(): Int {
-        return (ultrasonics.read()[3]).toInt()
-    }
-
     fun tankDrive(left: Double, right: Double) {
         frMotor.set(ControlMode.PercentOutput, right)
         flMotor.set(ControlMode.PercentOutput, left)
