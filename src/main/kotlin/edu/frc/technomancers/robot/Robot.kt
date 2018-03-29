@@ -4,6 +4,7 @@ import edu.frc.technomancers.robot.commands.ControlPickup
 import edu.frc.technomancers.robot.commands.DriveWithJoystick
 import edu.frc.technomancers.robot.commands.autonomous.Defensive
 import edu.frc.technomancers.robot.commands.autonomous.Offensive
+import edu.frc.technomancers.utilities.Vision
 import edu.wpi.first.wpilibj.DriverStation
 import edu.wpi.first.wpilibj.IterativeRobot
 import edu.wpi.first.wpilibj.command.Scheduler
@@ -19,6 +20,7 @@ class Robot : IterativeRobot() {
 
     override fun robotInit() {
         Scheduler.getInstance().add(DriveWithJoystick())
+        Vision()
         autoChooser.addDefault("Default", StartingPosition.DEFAULT)
         autoChooser.addObject("Left", StartingPosition.LEFT)
         autoChooser.addObject("Right", StartingPosition.RIGHT)
