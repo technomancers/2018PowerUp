@@ -1,45 +1,31 @@
 package edu.frc.technomancers.robot.commands
 
+import edu.frc.technomancers.robot.Operator
 import edu.frc.technomancers.robot.RobotMap
 import edu.frc.technomancers.robot.subsystems.Extenders
+import edu.frc.technomancers.utilities.Controller
 import edu.wpi.first.wpilibj.Timer
+import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder
 
 
 class ToggleExtender: CommandBase(){
 
-    val extenderPosition = Extenders.ExtenderState.UP
     var finished = false
-    val timer = Timer()
 
     init {
         requires(extenders)
-        timer.reset()
-        timer.start()
     }
 
     override fun execute() {
-        when(extenderPosition){
-            Extenders.ExtenderState.UP -> {
-                if(!timer.hasPeriodPassed(RobotMap.EXTENSION_TIME)){
-                    extenders.moveDown()
-                } else {
-                    timer.stop()
-                    finished = true
-                }
-            }
-            Extenders.ExtenderState.DOWN -> {
-                if(!timer.hasPeriodPassed(RobotMap.EXTENSION_TIME)){
-                    extenders.moveUp()
-                } else {
-                    timer.stop()
-                    finished = true
-                }
-            }
+        var speed = 0.0
+        //Multiply by .5 to slow it down
+        if(Operator.drivingController.buttonX.get()){
+            speed += RobotMap.EXTENDER_SPEED
         }
-    }
-
-    override fun end() {
-        extenders.stopMotor()
+        if(Operator.drivingController.buttonB.get()){
+            speed -= RobotMap.EXTENDER_SPEED
+        }
+        extenders.setSpeed(speed)
     }
 
     override fun isFinished(): Boolean {

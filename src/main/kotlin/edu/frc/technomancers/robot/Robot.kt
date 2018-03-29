@@ -47,7 +47,6 @@ class Robot : IterativeRobot() {
 
     override fun teleopInit() {
         Operator.drivingController.buttonA.whenPressed(ControlPickup())
-        Operator.drivingController.buttonX.whenPressed(ToggleExtender())
     }
 
     override fun teleopPeriodic() {

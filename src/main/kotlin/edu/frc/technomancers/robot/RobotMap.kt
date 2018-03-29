@@ -38,6 +38,7 @@ object RobotMap {
 
     val SHOOTING_WAIT_TIME: Int
     val EXTENSION_TIME: Double
+    val EXTENDER_SPEED: Double
 
     val SWERVE_TOLERANCE: Double
 
@@ -86,6 +87,7 @@ object RobotMap {
 
         SHOOTING_WAIT_TIME = pref.getInt("shootingWaitTime",0)
         EXTENSION_TIME = pref.getDouble("extensionTime", 0.0)
+        EXTENDER_SPEED = pref.getDouble("extenderSpeed", 0.0)
 
         FRONT_RIGHT_ANALOG = pref.getInt("frontRightAnalog", 1)
         FRONT_LEFT_ANALOG = pref.getInt("frontLeftAnalog", 0)
