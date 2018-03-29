@@ -5,6 +5,6 @@ class Vision{
     init {
         val camera = CameraServer.getInstance().startAutomaticCapture()
         camera.setFPS(30)
-        camera.setResolution(320, 240)
+        camera.setResolution(160, 120)
     }
 }
