@@ -6,7 +6,7 @@ import edu.frc.technomancers.robot.subsystems.CubePickup
 
 class ControlPickup : CommandBase() {
     private var finished = false
-    private var pneumaticState = CubePickup.PneumaticStates.BLOCK_SHOT_OUT
+    private var pneumaticState = CubePickup.PneumaticStates.CLOSED
 
     init {
         requires(cubePickup)
@@ -14,21 +14,13 @@ class ControlPickup : CommandBase() {
 
     override fun execute() {
         when(pneumaticState){
-            CubePickup.PneumaticStates.PICK_UP_READY ->{
-                System.out.println(pneumaticState)
-                cubePickup.closeGripper()
-                pneumaticState = CubePickup.PneumaticStates.BLOCK_SHOT_OUT
-                Operator.drivingController.setRumble(.5)
-            }
-            CubePickup.PneumaticStates.BLOCK_SHOT_OUT ->{
-                System.out.println(pneumaticState)
-                cubePickup.shootOut()
-                Thread.sleep((RobotMap.SHOOTING_WAIT_TIME).toLong())
+            CubePickup.PneumaticStates.CLOSED ->{
                 cubePickup.openGripper()
-                Thread.sleep((RobotMap.SHOOTING_WAIT_TIME).toLong())
-                cubePickup.shootIn()
-                Operator.drivingController.setRumble(0.0)
-                pneumaticState = CubePickup.PneumaticStates.PICK_UP_READY
+                pneumaticState = CubePickup.PneumaticStates.OPENED
+            }
+            CubePickup.PneumaticStates.OPENED ->{
+                cubePickup.closeGripper()
+                pneumaticState = CubePickup.PneumaticStates.CLOSED
             }
         }
         finished = true
