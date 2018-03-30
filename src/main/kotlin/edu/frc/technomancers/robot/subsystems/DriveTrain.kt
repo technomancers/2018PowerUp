@@ -100,6 +100,6 @@ class DriveTrain: Subsystem() {
             delta -= RobotMap.ENCODER_TICKS_PER_REVOLUTION / 2.0
 
         }
-        motor.set(ControlMode.PercentOutput, delta * 2 / RobotMap.ENCODER_TICKS_PER_REVOLUTION)
+        motor.set(ControlMode.PercentOutput, delta * RobotMap.SWERVE_PROPORTIONAL / RobotMap.ENCODER_TICKS_PER_REVOLUTION)
     }
 }

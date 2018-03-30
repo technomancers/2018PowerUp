@@ -41,6 +41,7 @@ object RobotMap {
     val EXTENDER_SPEED: Double
 
     val SWERVE_TOLERANCE: Double
+    val SWERVE_PROPORTIONAL: Double
 
     val FRONT_RIGHT_ANALOG: Int
     val FRONT_LEFT_ANALOG: Int
@@ -100,5 +101,6 @@ object RobotMap {
         FRONT_RIGHT_ZERO = pref.getInt("frontRightZero", 0)
 
         SWERVE_TOLERANCE = pref.getDouble("swerveTolerance", 0.0)
+        SWERVE_PROPORTIONAL = pref.getDouble("swerveProportional", 0.0)
     }
 }
