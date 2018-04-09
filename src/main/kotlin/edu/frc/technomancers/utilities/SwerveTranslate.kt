@@ -16,10 +16,10 @@ class SwerveTranslate(robotLength : Double, robotWidth : Double){
     var frontLeftAngle = 0.0
 
     fun calculate(x1 : Double, y1 : Double, x2 : Double) {
-        val backXVector = -x1 + x2 * cosine
-        val frontXVector = -x1 - x2 * cosine
-        val leftYVector = -y1 + x2 * sine
-        val rightYVector = -y1 - x2 * sine
+        val backXVector = x1 - x2 * cosine
+        val frontXVector = x1 + x2 * cosine
+        val leftYVector = -y1 - x2 * sine
+        val rightYVector = -y1 + x2 * sine
 
         backRightMag = FastMath.hypot(backXVector, rightYVector)
         backLeftMag = FastMath.hypot(backXVector, leftYVector)

@@ -89,11 +89,11 @@ object RobotMap {
         SHOOTING_WAIT_TIME = pref.getInt("shootingWaitTime",0)
         EXTENSION_TIME = pref.getDouble("extensionTime", 0.0)
         EXTENDER_SPEED = pref.getDouble("extenderSpeed", 0.0)
-
-        FRONT_RIGHT_ANALOG = pref.getInt("frontRightAnalog", 1)
+      
+        FRONT_RIGHT_ANALOG = pref.getInt("frontRightAnalog", 0)
         FRONT_LEFT_ANALOG = pref.getInt("frontLeftAnalog", 0)
-        BACK_RIGHT_ANALOG = pref.getInt("backRightAnalog", 3)
-        BACK_LEFT_ANALOG = pref.getInt("backLeftAnalog", 2)
+        BACK_RIGHT_ANALOG = pref.getInt("backRightAnalog", 0)
+        BACK_LEFT_ANALOG = pref.getInt("backLeftAnalog", 0)
 
         BACK_LEFT_ZERO = pref.getInt("backLeftZero", 0)
         BACK_RIGHT_ZERO = pref.getInt("backRightZero", 0)

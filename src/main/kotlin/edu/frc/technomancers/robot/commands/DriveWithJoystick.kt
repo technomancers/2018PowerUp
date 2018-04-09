@@ -15,9 +15,11 @@ class DriveWithJoystick: CommandBase(){
     }
 
     override fun execute() {
-        driveTrain.tankDrive(
-                Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_Y),
-                Operator.drivingController.getNormalizedAxis(Controller.Axes.RIGHT_Y))
+        driveTrain.swerveTranslate.calculate(
+                Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_X),
+                -1.0 * Operator.drivingController.getNormalizedAxis(Controller.Axes.LEFT_Y),
+                Operator.drivingController.getNormalizedAxis(Controller.Axes.RIGHT_X))
+        driveTrain.swerveDrive()
     }
 
     override fun end(){

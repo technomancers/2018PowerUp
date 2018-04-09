@@ -11,39 +11,24 @@ import edu.wpi.first.wpilibj.AnalogInput
 import edu.wpi.first.wpilibj.command.Subsystem
 import org.apache.commons.math3.util.FastMath
 
-class DriveTrain: Subsystem() {
-    val frMotor = TalonSRX(RobotMap.FRONT_RIGHT_MOTOR_DIRECTIONAL)
-    val flMotor = TalonSRX(RobotMap.FRONT_LEFT_MOTOR_DIRECTIONAL)
-    val brMotor = TalonSRX(RobotMap.BACK_RIGHT_MOTOR_DIRECTIONAL)
-    val blMotor = TalonSRX(RobotMap.BACK_LEFT_MOTOR_DIRECTIONAL)
-    val frAngleMotor = TalonSRX(RobotMap.FRONT_RIGHT_MOTOR_ROTATIONAL)
-    val flAngleMotor = TalonSRX(RobotMap.FRONT_LEFT_MOTOR_ROTATIONAL)
-    val brAngleMotor = TalonSRX(RobotMap.BACK_RIGHT_MOTOR_ROTATIONAL)
-    val blAngleMotor = TalonSRX(RobotMap.BACK_LEFT_MOTOR_ROTATIONAL)
-    val frEncoder = AnalogInput(RobotMap.FRONT_RIGHT_ANALOG)
-    val flEncoder = AnalogInput(RobotMap.FRONT_LEFT_ANALOG)
-    val brEncoder = AnalogInput(RobotMap.BACK_RIGHT_ANALOG)
-    val blEncoder = AnalogInput(RobotMap.BACK_LEFT_ANALOG)
-    val ultrasonics = I2C()
-
+class DriveTrain: Subsystem()
+{
     private val frontLeftWheel = WheelDrive(RobotMap.FRONT_LEFT_MOTOR_DIRECTIONAL,
-            RobotMap.FRONT_LEFT_MOTOR_ROTATIONAL)
+            RobotMap.FRONT_LEFT_MOTOR_ROTATIONAL, RobotMap.FRONT_LEFT_ANALOG,
+            RobotMap.FRONT_LEFT_ZERO, WheelDrive.WheelType.FRONT)
     private val frontRightWheel = WheelDrive(RobotMap.FRONT_RIGHT_MOTOR_DIRECTIONAL,
-            RobotMap.FRONT_RIGHT_MOTOR_ROTATIONAL)
+            RobotMap.FRONT_RIGHT_MOTOR_ROTATIONAL, RobotMap.FRONT_RIGHT_ANALOG,
+            RobotMap.FRONT_RIGHT_ZERO, WheelDrive.WheelType.FRONT)
     private val backLeftWheel = WheelDrive(RobotMap.BACK_LEFT_MOTOR_DIRECTIONAL,
-            RobotMap.BACK_LEFT_MOTOR_ROTATIONAL)
+            RobotMap.BACK_LEFT_MOTOR_ROTATIONAL, RobotMap.BACK_LEFT_ANALOG,
+            RobotMap.BACK_LEFT_ZERO, WheelDrive.WheelType.BACK)
     private val backRightWheel = WheelDrive(RobotMap.BACK_RIGHT_MOTOR_DIRECTIONAL,
-            RobotMap.BACK_RIGHT_MOTOR_ROTATIONAL)
+            RobotMap.BACK_RIGHT_MOTOR_ROTATIONAL, RobotMap.BACK_RIGHT_ANALOG,
+            RobotMap.BACK_RIGHT_ZERO, WheelDrive.WheelType.BACK)
     val swerveTranslate = SwerveTranslate(RobotMap.ROBOT_LENGTH, RobotMap.ROBOT_WIDTH)
+
     override fun initDefaultCommand() {
         defaultCommand = DriveWithJoystick()
-    }
-
-    init {
-        frMotor.inverted = true
-        brMotor.inverted = true
-        flMotor.inverted = true
-        blMotor.inverted = true
     }
 
     fun swerveDrive() {
