@@ -9,13 +9,17 @@ import edu.wpi.first.wpilibj.command.Subsystem
 class DriveTrain: Subsystem()
 {
     private val frontLeftWheel = WheelDrive(RobotMap.FRONT_LEFT_MOTOR_DIRECTIONAL,
-            RobotMap.FRONT_LEFT_MOTOR_ROTATIONAL, RobotMap.FRONT_LEFT_ANALOG, RobotMap.FRONT_LEFT_ZERO, WheelDrive.WheelType.FRONT)
+            RobotMap.FRONT_LEFT_MOTOR_ROTATIONAL, RobotMap.FRONT_LEFT_ANALOG,
+            RobotMap.FRONT_LEFT_ZERO, WheelDrive.WheelType.FRONT)
     private val frontRightWheel = WheelDrive(RobotMap.FRONT_RIGHT_MOTOR_DIRECTIONAL,
-            RobotMap.FRONT_RIGHT_MOTOR_ROTATIONAL, RobotMap.FRONT_RIGHT_ANALOG, RobotMap.FRONT_RIGHT_ZERO, WheelDrive.WheelType.FRONT)
+            RobotMap.FRONT_RIGHT_MOTOR_ROTATIONAL, RobotMap.FRONT_RIGHT_ANALOG,
+            RobotMap.FRONT_RIGHT_ZERO, WheelDrive.WheelType.FRONT)
     private val backLeftWheel = WheelDrive(RobotMap.BACK_LEFT_MOTOR_DIRECTIONAL,
-            RobotMap.BACK_LEFT_MOTOR_ROTATIONAL, RobotMap.BACK_LEFT_ANALOG, RobotMap.BACK_LEFT_ZERO, WheelDrive.WheelType.BACK)
+            RobotMap.BACK_LEFT_MOTOR_ROTATIONAL, RobotMap.BACK_LEFT_ANALOG,
+            RobotMap.BACK_LEFT_ZERO, WheelDrive.WheelType.BACK)
     private val backRightWheel = WheelDrive(RobotMap.BACK_RIGHT_MOTOR_DIRECTIONAL,
-            RobotMap.BACK_RIGHT_MOTOR_ROTATIONAL, RobotMap.BACK_RIGHT_ANALOG, RobotMap.BACK_RIGHT_ZERO, WheelDrive.WheelType.BACK)
+            RobotMap.BACK_RIGHT_MOTOR_ROTATIONAL, RobotMap.BACK_RIGHT_ANALOG,
+            RobotMap.BACK_RIGHT_ZERO, WheelDrive.WheelType.BACK)
     val swerveTranslate = SwerveTranslate(RobotMap.ROBOT_LENGTH, RobotMap.ROBOT_WIDTH)
 
     override fun initDefaultCommand() {

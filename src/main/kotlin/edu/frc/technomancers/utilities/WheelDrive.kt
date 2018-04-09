@@ -17,55 +17,15 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int, analogPos: Int, zeroS
     private val encoder = AnalogInput(analogPos)
     private val wheelZero = zeroState
     private val position = pos
-    //val pid = PIDController(1.0, 0.0, 0.0, encoder, PIDOutput{angleMotor})
 
     enum class WheelType{
         FRONT, BACK
     }
-    init {
-        //pid.enable()
-    }
 
     fun drive(speed: Double, angle: Double) {
-        @Suppress("MagicNumber")
-//        val current = encoder.voltage * RobotMap.ENCODER_TICKS_PER_REVOLUTION / 5.0
-//        var speedOfWheel = speed
-//        val midRelative = (FastMath.abs(current) % RobotMap.ENCODER_TICKS_PER_REVOLUTION) * current.sign
-//        val lowRelative = midRelative - RobotMap.ENCODER_TICKS_PER_REVOLUTION
-//        val highRelative = midRelative + RobotMap.ENCODER_TICKS_PER_REVOLUTION
-//        var target = (RobotMap.ENCODER_TICKS_PER_REVOLUTION/2) * angle
-//        val lowDelta = target - lowRelative
-//        val midDelta = target - midRelative
-//        val highDelta = target - highRelative
-//        var delta = displacementMin(doubleArrayOf(lowDelta, midDelta, highDelta))
-//        if(delta < RobotMap.ENCODER_TICKS_PER_REVOLUTION/-4){
-//            delta += RobotMap.ENCODER_TICKS_PER_REVOLUTION/2
-//            speedOfWheel *= -1
-//        }
-//        if(delta > RobotMap.ENCODER_TICKS_PER_REVOLUTION/4){
-//            delta -= RobotMap.ENCODER_TICKS_PER_REVOLUTION/2
-//            speedOfWheel *= -1
-//        }
-//        val next = delta + current
-//        angleMotor.set(ControlMode.Position, next)
-//        speedMotor.set(ControlMode.PercentOutput, speedOfWheel)
         deepsAlgorithm(angle, speed)
     }
 
-    private fun displacementMin(deltas : DoubleArray):Double{
-        var min : Double? = null
-        for (delta in deltas){
-            if (min == null){
-                min = delta
-            }else {
-                if (FastMath.abs(delta) < FastMath.abs(min)){
-                    min = delta
-                }
-            }
-        }
-
-        return if (min == null) 0.0 else min
-    }
 
     fun deepsAlgorithm(angle: Double, speed: Double){
         val current = ((encoder.voltage * RobotMap.ENCODER_TICKS_PER_REVOLUTION / 5.0 - wheelZero)) % RobotMap.ENCODER_TICKS_PER_REVOLUTION
@@ -105,7 +65,6 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int, analogPos: Int, zeroS
             delta -= RobotMap.ENCODER_TICKS_PER_REVOLUTION/2.0
             finalSpeed *= -1.0
         }
-        //pid.setpoint = delta + current
         if(position == WheelType.BACK){
             angleMotor.set(ControlMode.PercentOutput, (delta * 2 / RobotMap.ENCODER_TICKS_PER_REVOLUTION))
         } else {
