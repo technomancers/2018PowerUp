@@ -3,9 +3,10 @@ package edu.frc.technomancers.utilities
 import org.apache.commons.math3.util.FastMath
 
 class SwerveTranslate(robotLength : Double, robotWidth : Double){
+    @Suppress("MagicNumber")
     private val robotDiagonal = FastMath.hypot(robotLength, robotWidth)
-    private val cosine = robotLength / robotDiagonal
-    private val sine = robotWidth / robotDiagonal
+    private val cosine = .834
+    private val sine = .555
     var backRightMag = 0.0
     var backRightAngle = 0.0
     var backLeftMag = 0.0
@@ -16,10 +17,10 @@ class SwerveTranslate(robotLength : Double, robotWidth : Double){
     var frontLeftAngle = 0.0
 
     fun calculate(x1 : Double, y1 : Double, x2 : Double) {
-        val backXVector = x1 - x2 * cosine
-        val frontXVector = x1 + x2 * cosine
-        val leftYVector = -y1 - x2 * sine
-        val rightYVector = -y1 + x2 * sine
+        val backXVector = x1 - (x2) * cosine
+        val frontXVector = x1 + (x2) * cosine
+        val leftYVector = -y1 - (x2) * sine
+        val rightYVector = -y1 + (x2) * sine
 
         backRightMag = FastMath.hypot(backXVector, rightYVector)
         backLeftMag = FastMath.hypot(backXVector, leftYVector)
@@ -34,9 +35,11 @@ class SwerveTranslate(robotLength : Double, robotWidth : Double){
             frontLeftMag /= max
         }
 
-        backRightAngle = FastMath.atan2(backXVector, rightYVector) / FastMath.PI
+        backRightAngle = Math.atan2(backXVector, rightYVector)/ FastMath.PI
         backLeftAngle = FastMath.atan2(backXVector, leftYVector) / FastMath.PI
         frontRightAngle = FastMath.atan2(frontXVector, rightYVector) / FastMath.PI
         frontLeftAngle = FastMath.atan2(frontXVector, leftYVector) / FastMath.PI
+        println("Back Right: " + backRightAngle)
+        println("Front Left: " + frontLeftAngle)
     }
 }
