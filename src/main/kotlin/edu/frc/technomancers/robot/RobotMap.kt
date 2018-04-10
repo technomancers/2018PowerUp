@@ -16,10 +16,32 @@ object RobotMap {
     val BACK_RIGHT_MOTOR_DIRECTIONAL: Int
     val BACK_RIGHT_MOTOR_ROTATIONAL: Int
 
+    val EXTENDER_MOTOR: Int
+
+    val ROBOT_LIFT: Int
+
     val ROBOT_WIDTH: Double
     val ROBOT_LENGTH: Double
 
     val ENCODER_TICKS_PER_REVOLUTION: Int
+
+    val AUTO_SPEED: Double
+    val TIME_TILL_SWITCH: Double
+    val TIME_CUBE_TO_TOP: Double
+
+    val FORWARD_CHANNEL_GRIPPER: Int
+    val REVERSE_CHANNEL_GRIPPER: Int
+    val FORWARD_CHANNEL_SHOOTER: Int
+    val REVERSE_CHANNEL_SHOOTER: Int
+
+    val COMPRESSOR_NODE_ID: Int
+
+    val SHOOTING_WAIT_TIME: Int
+    val EXTENSION_TIME: Double
+    val EXTENDER_SPEED: Double
+
+    val SWERVE_TOLERANCE: Double
+    val SWERVE_PROPORTIONAL: Double
 
     val FRONT_RIGHT_ANALOG: Int
     val FRONT_LEFT_ANALOG: Int
@@ -44,10 +66,30 @@ object RobotMap {
         BACK_RIGHT_MOTOR_DIRECTIONAL = pref.getInt("backRightDir", 0)
         BACK_RIGHT_MOTOR_ROTATIONAL = pref.getInt("backRightRot", 0)
 
+        EXTENDER_MOTOR = pref.getInt("extenderMotor", 0)
+
+        ROBOT_LIFT = pref.getInt("robotLift",0)
+
         ROBOT_LENGTH = pref.getDouble("robotLength", 0.0)
         ROBOT_WIDTH = pref.getDouble("RobotWidth", 0.0)
 
         ENCODER_TICKS_PER_REVOLUTION = pref.getInt("encoderTicksPerRevolution", 0)
+
+        AUTO_SPEED = pref.getDouble("autoSpeed" , 0.0)
+        TIME_TILL_SWITCH = pref.getDouble("timeTillSwitch", 0.0)
+        TIME_CUBE_TO_TOP = pref.getDouble("timeCubeToTop", 0.0)
+
+        FORWARD_CHANNEL_GRIPPER = pref.getInt("forwardChannelGripper", 0)
+        REVERSE_CHANNEL_GRIPPER = pref.getInt("reverseChannelGripper", 0)
+        FORWARD_CHANNEL_SHOOTER = pref.getInt("forwardChannelShooter", 0)
+        REVERSE_CHANNEL_SHOOTER = pref.getInt("reverseChannelShooter", 0)
+
+        COMPRESSOR_NODE_ID = pref.getInt("CompressorNodeID", 0)
+
+        SHOOTING_WAIT_TIME = pref.getInt("shootingWaitTime",0)
+        EXTENSION_TIME = pref.getDouble("extensionTime", 0.0)
+        EXTENDER_SPEED = pref.getDouble("extenderSpeed", 0.0)
+      
         FRONT_RIGHT_ANALOG = pref.getInt("frontRightAnalog", 0)
         FRONT_LEFT_ANALOG = pref.getInt("frontLeftAnalog", 0)
         BACK_RIGHT_ANALOG = pref.getInt("backRightAnalog", 0)
@@ -57,5 +99,8 @@ object RobotMap {
         BACK_RIGHT_ZERO = pref.getInt("backRightZero", 0)
         FRONT_LEFT_ZERO = pref.getInt("frontLeftZero", 0)
         FRONT_RIGHT_ZERO = pref.getInt("frontRightZero", 0)
+
+        SWERVE_TOLERANCE = pref.getDouble("swerveTolerance", 0.0)
+        SWERVE_PROPORTIONAL = pref.getDouble("swerveProportional", 0.0)
     }
 }

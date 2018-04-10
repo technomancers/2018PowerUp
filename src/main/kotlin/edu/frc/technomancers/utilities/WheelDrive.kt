@@ -18,10 +18,12 @@ class WheelDrive(speedMotorPort: Int, angleMotorPort: Int, analogPos: Int, zeroS
     private val wheelZero = zeroState
     private val position = pos
 
+
     enum class WheelType{
         FRONT, BACK
     }
 
+    @Suppress("MagicNumber")
     fun drive(speed: Double, angle: Double) {
         deepsAlgorithm(angle, speed)
     }
