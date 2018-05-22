@@ -65,7 +65,9 @@ class DriveTrain: Subsystem() {
     }
 
     fun deepsAlgorithm(angle: Double, motor: TalonSRX, encoder: AnalogInput, wheelZero: Int) {
-        val current = ((encoder.voltage * RobotMap.ENCODER_TICKS_PER_REVOLUTION / 5.0 - wheelZero)) % RobotMap.ENCODER_TICKS_PER_REVOLUTION
+        @Suppress("MagicNumber")
+        val current = ((encoder.voltage * RobotMap.ENCODER_TICKS_PER_REVOLUTION / 5.0 -
+                wheelZero)) % RobotMap.ENCODER_TICKS_PER_REVOLUTION
         val convertedAngle = (angle + 1) * RobotMap.ENCODER_TICKS_PER_REVOLUTION / 2.0
         var delta = 0.0
         if (current > convertedAngle) {
@@ -100,6 +102,7 @@ class DriveTrain: Subsystem() {
             delta -= RobotMap.ENCODER_TICKS_PER_REVOLUTION / 2.0
 
         }
-        motor.set(ControlMode.PercentOutput, delta * RobotMap.SWERVE_PROPORTIONAL / RobotMap.ENCODER_TICKS_PER_REVOLUTION)
+        motor.set(ControlMode.PercentOutput, delta * RobotMap.SWERVE_PROPORTIONAL
+                / RobotMap.ENCODER_TICKS_PER_REVOLUTION)
     }
 }
